@@ -55,4 +55,4 @@ if (!ini_key_exists("DEBUG", "debug")) {
 
 ossafe_ini_close();
 
-global.widescreen_mod_ver = "0.1-dev"
+global.widescreen_mod_ver = "0.1.0-dev"
