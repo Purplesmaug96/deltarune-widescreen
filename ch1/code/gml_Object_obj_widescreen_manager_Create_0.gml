@@ -1,7 +1,7 @@
 ossafe_ini_open("widescreen.ini");
 
 if (ini_read_real("GRAPHICS", "widescreen_width", 0) == 0) {
-    global.widescreen_width = display_get_width() / (display_get_height() / 480);
+    global.widescreen_width = round(display_get_width() / (display_get_height() / 480));
 }
 else {
     global.widescreen_width = ini_read_real("GRAPHICS", "widescreen_width", 0);
