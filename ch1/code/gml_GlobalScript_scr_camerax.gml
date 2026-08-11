@@ -1,3 +1,3 @@
 function camerax() {
-    return __view_get(e__VW.XView, 0) + global.widescreen_half_diff;
+    return camera_get_view_x(view_camera[0]) + global.widescreen_half_diff;
 }

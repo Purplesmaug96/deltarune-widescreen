@@ -1,3 +1,3 @@
 function raw_camerax() {
-    return __view_get(e__VW.XView, 0);
+    return camera_get_view_x(view_camera[0]);
 }
