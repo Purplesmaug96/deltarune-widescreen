@@ -25,6 +25,16 @@
       "Category": "Create",
       "Subtype": "",
       "CodeEntry": "gml_Object_obj_widescreen_manager_Create_0"
+    },
+    {
+      "Category": "Draw",
+      "Subtype": "DrawGUI",
+      "CodeEntry": "gml_Object_obj_widescreen_manager_Draw_64"
+    },
+    {
+      "Category": "Other",
+      "Subtype": "RoomStart",
+      "CodeEntry": "gml_Object_obj_widescreen_manager_Other_4"
     }
   ]
 }
