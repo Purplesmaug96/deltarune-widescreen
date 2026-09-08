@@ -36,6 +36,6 @@ if (scr_debug()) {
     var _gui_mx = (mouse_x - _cam_x) * (_gui_w / _cam_w);
     var _gui_my = (mouse_y - _cam_y) * (_gui_h / _cam_h);
     
-    draw_set_colour(merge_colour(c_green, c_white));
+    draw_set_colour(c_lime);
     draw_rectangle(_gui_mx, _gui_my, _gui_mx + 10, _gui_my + 10, false);
 }
