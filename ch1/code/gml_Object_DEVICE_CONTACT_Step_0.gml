@@ -9,17 +9,17 @@ if (EVENT == 0)
     EVENT = 1;
     if (global.lang == "ja")
     {
-        W = instance_create(100, 80, obj_writer);
+        W = instance_create(100 + global.widescreen_quarter_diff,  80, obj_writer);
     }
     else
     {
-        W = instance_create(110, 80, obj_writer);
+        W = instance_create(110 + global.widescreen_quarter_diff,  80, obj_writer);
     }
 }
 if (EVENT == 1 && !instance_exists(obj_writer))
 {
     snd_play(AUDIO_APPEARANCE);
-    SOUL = instance_create(150, 120, DEVICE_APPEARANCE);
+    SOUL = instance_create(150 + global.widescreen_quarter_diff, 120, DEVICE_APPEARANCE);
     SOUL.momentum = 0.5;
     EVENT = 2;
     alarm[4] = 20;
@@ -41,7 +41,7 @@ if (EVENT == 5)
     global.msg[1] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_34_0");
     global.msg[2] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_35_0");
     global.msg[3] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_36_0");
-    W = instance_create(110, 50, obj_writer);
+    W = instance_create(110 + global.widescreen_quarter_diff,  50, obj_writer);
     EVENT = 5.1;
 }
 if (EVENT == 5.1 && instance_exists(obj_writer) && FADED == 0)
@@ -94,7 +94,7 @@ if (EVENT == 10)
     global.typer = 667;
     global.msg[0] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_107_0");
     global.msg[1] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_111_0");
-    W = instance_create(80, 50, obj_writer);
+    W = instance_create(80 + global.widescreen_quarter_diff,  50, obj_writer);
     EVENT = 16;
 }
 if (EVENT == 15)
@@ -109,14 +109,14 @@ if (EVENT == 16 && !instance_exists(obj_writer))
     global.typer = 667;
     global.msg[0] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_125_0");
     global.msg[1] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_126_0");
-    W = instance_create(75, 40, obj_writer);
+    W = instance_create(75 + global.widescreen_quarter_diff,  40, obj_writer);
     EVENT = 17;
     alarm[4] = 30;
 }
 if (EVENT == 18)
 {
     EVENT = 19;
-    GM = instance_create(140, 120, DEVICE_GONERMAKER);
+    GM = instance_create(140 + global.widescreen_quarter_diff, 120, DEVICE_GONERMAKER);
 }
 if (EVENT == 19)
 {
@@ -135,13 +135,13 @@ if (EVENT == 20.1)
     global.msg[0] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_148_0");
     global.msg[1] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_149_0");
     global.msg[2] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_150_0");
-    W = instance_create(75, 40, obj_writer);
+    W = instance_create(75 + global.widescreen_quarter_diff,  40, obj_writer);
     EVENT = 21;
     alarm[4] = 30;
 }
 if (EVENT == 22)
 {
-    GM = instance_create(140, 120, DEVICE_GONERMAKER);
+    GM = instance_create(140 + global.widescreen_quarter_diff, 120, DEVICE_GONERMAKER);
     GM.s = 1;
     GM.STEP = 2;
     EVENT = 23;
@@ -162,13 +162,13 @@ if (EVENT == 24.1)
     }
     global.msg[0] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_173_0");
     global.msg[1] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_174_0");
-    W = instance_create(75, 40, obj_writer);
+    W = instance_create(75 + global.widescreen_quarter_diff,  40, obj_writer);
     EVENT = 25;
     alarm[4] = 30;
 }
 if (EVENT == 26)
 {
-    GM = instance_create(140, 120, DEVICE_GONERMAKER);
+    GM = instance_create(140 + global.widescreen_quarter_diff, 120, DEVICE_GONERMAKER);
     GM.s = 2;
     GM.STEP = 3;
     EVENT = 27;
@@ -188,7 +188,7 @@ if (EVENT == 29)
     {
         instance_destroy();
     }
-    GM = instance_create(140, 90, DEVICE_GONERMAKER);
+    GM = instance_create(140 + global.widescreen_quarter_diff, 90, DEVICE_GONERMAKER);
     GM.CANCEL = 1;
     GM.FINISH = -1;
     GM.s = -1;
@@ -196,7 +196,7 @@ if (EVENT == 29)
     global.msg[0] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_205_0");
     global.msg[1] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_206_0");
     global.msg[2] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_207_0");
-    W = instance_create(60, 40, obj_writer);
+    W = instance_create(60 + global.widescreen_quarter_diff,  40, obj_writer);
     EVENT = 30;
     alarm[4] = 110;
 }
@@ -236,7 +236,7 @@ if (EVENT == 35)
     global.msg[1] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_241_0");
     global.msg[2] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_242_0");
     global.msg[3] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_243_0");
-    W = instance_create(60, 40, obj_writer);
+    W = instance_create(60 + global.widescreen_quarter_diff,  40, obj_writer);
     EVENT = 36;
 }
 if (EVENT == 36 && !instance_exists(obj_writer))
@@ -247,7 +247,7 @@ if (EVENT == 36 && !instance_exists(obj_writer))
     global.typer = 667;
     global.msg[0] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_258_0");
     global.msg[1] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_259_0");
-    W = instance_create(80, 40, obj_writer);
+    W = instance_create(80 + global.widescreen_quarter_diff,  40, obj_writer);
 }
 if (EVENT == 37)
 {
@@ -306,7 +306,7 @@ if (EVENT == 41)
     global.typer = 667;
     global.msg[0] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_323_0");
     global.msg[1] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_324_0");
-    W = instance_create(80, 40, obj_writer);
+    W = instance_create(80 + global.widescreen_quarter_diff,  40, obj_writer);
 }
 if (EVENT == 43)
 {
@@ -355,7 +355,7 @@ if (EVENT == 46)
     global.typer = 667;
     global.msg[0] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_381_0");
     global.msg[1] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_382_0");
-    W = instance_create(80, 40, obj_writer);
+    W = instance_create(80 + global.widescreen_quarter_diff,  40, obj_writer);
 }
 if (EVENT == 48)
 {
@@ -412,7 +412,7 @@ if (EVENT == 51.5)
     {
         JA_XOFF = -20;
     }
-    W = instance_create(80 + JA_XOFF, 30, obj_writer);
+    W = instance_create(80 + JA_XOFF + global.widescreen_quarter_diff,  30, obj_writer);
 }
 if (EVENT == 53.5)
 {
@@ -461,7 +461,7 @@ if (EVENT == 51)
     global.typer = 667;
     global.msg[0] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_497_0");
     global.msg[1] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_498_0");
-    W = instance_create(50, 20, obj_writer);
+    W = instance_create(50 + global.widescreen_quarter_diff,  20, obj_writer);
 }
 if (EVENT == 53)
 {
@@ -509,7 +509,7 @@ if (EVENT == 55.1)
     global.typer = 667;
     global.msg[0] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_555_0");
     global.msg[1] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_556_0");
-    W = instance_create(65, 30, obj_writer);
+    W = instance_create(65 + global.widescreen_quarter_diff,  30, obj_writer);
 }
 if (EVENT == 57)
 {
@@ -555,7 +555,7 @@ if (EVENT == 60)
     global.typer = 667;
     global.msg[0] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_611_0");
     global.msg[1] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_612_0");
-    W = instance_create(60, 20, obj_writer);
+    W = instance_create(60 + global.widescreen_quarter_diff,  20, obj_writer);
 }
 if (EVENT == 62)
 {
@@ -597,7 +597,7 @@ if (EVENT == 65)
         instance_destroy();
     }
     global.msg[0] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_664_0");
-    W = instance_create(90, 50, obj_writer);
+    W = instance_create(90 + global.widescreen_quarter_diff,  50, obj_writer);
     EVENT = 65.5;
     alarm[4] = 32;
     if (instance_exists(DEVICE_GONERMAKER))
@@ -633,7 +633,7 @@ if (EVENT == 66.5 && instance_exists(obj_writer) == false)
     }
     global.msg[0] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_697_0");
     global.msg[1] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_698_0");
-    W = instance_create(68 + JA_XOFF, 20, obj_writer);
+    W = instance_create(68 + JA_XOFF + global.widescreen_quarter_diff,  20, obj_writer);
     CHOICE = instance_create(0, 0, DEVICE_CHOICE);
     EVENT = 67;
     with (CHOICE)
@@ -684,7 +684,7 @@ if (EVENT == 69)
         global.msg[1] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_735_0");
         global.msg[2] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_736_0");
     }
-    W = instance_create(80, 50, obj_writer);
+    W = instance_create(80 + global.widescreen_quarter_diff,  50, obj_writer);
     EVENT = 70;
 }
 if (EVENT == 70 && instance_exists(obj_writer) == false)
@@ -700,7 +700,7 @@ if (EVENT == 70 && instance_exists(obj_writer) == false)
     }
     global.msg[0] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_755_0");
     global.msg[1] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_756_0");
-    W = instance_create(88 + JA_XOFF, 20, obj_writer);
+    W = instance_create(88 + JA_XOFF + global.widescreen_quarter_diff,  20, obj_writer);
     CHOICE = instance_create(0, 0, DEVICE_CHOICE);
     EVENT = 71;
     with (CHOICE)
@@ -759,7 +759,7 @@ if (EVENT == 73)
         global.msg[1] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_800_0");
         global.msg[2] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_801_0");
     }
-    W = instance_create(80, 50, obj_writer);
+    W = instance_create(80 + global.widescreen_quarter_diff,  50, obj_writer);
     EVENT = 74;
 }
 if (EVENT == 74 && !instance_exists(obj_writer))
@@ -770,7 +770,7 @@ if (EVENT == 74 && !instance_exists(obj_writer))
     global.msg[1] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_817_0");
     global.msg[2] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_818_0");
     global.msg[3] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_819_0");
-    W = instance_create(80, 50, obj_writer);
+    W = instance_create(80 + global.widescreen_quarter_diff,  50, obj_writer);
     EVENT = 75;
 }
 if (EVENT == 75 && !instance_exists(obj_writer))
@@ -800,7 +800,7 @@ if (EVENT == 77)
     {
         JA_XOFF = -10;
     }
-    W = instance_create(100 + JA_XOFF, 50, obj_writer);
+    W = instance_create(100 + JA_XOFF + global.widescreen_quarter_diff,  50, obj_writer);
     EVENT = 78;
 }
 if (EVENT == 78 && !instance_exists(obj_writer))
@@ -822,7 +822,7 @@ if (EVENT == 78 && !instance_exists(obj_writer))
     {
         JA_XOFF = -15;
     }
-    W = instance_create(145 + JA_XOFF, 50, obj_writer);
+    W = instance_create(145 + JA_XOFF + global.widescreen_quarter_diff,  50, obj_writer);
     EVENT = 98;
     WHITEFADE = 1;
     FADEUP = 0.008;
@@ -855,7 +855,7 @@ if (EVENT == 100 && !instance_exists(obj_writer))
     global.msg[1] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_890_0");
     global.msg[2] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_891_0");
     alarm[4] = 350;
-    instance_create(125, 90, obj_writer);
+    instance_create(125 + global.widescreen_quarter_diff,  90, obj_writer);
 }
 if (EVENT == 102)
 {
@@ -867,13 +867,13 @@ if (EVENT == 900)
     global.msg[0] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_928_0");
     global.msg[1] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_929_0");
     global.msg[2] = scr_84_get_lang_string("DEVICE_CONTACT_slash_Step_0_gml_930_0");
-    W = instance_create(80, 50, obj_writer);
+    W = instance_create(80 + global.widescreen_quarter_diff,  50, obj_writer);
     EVENT = 919;
     alarm[4] = 100;
 }
 if (EVENT == 920)
 {
-    choice = instance_create(100, 100, DEVICE_CHOICE);
+    choice = instance_create(100 + global.widescreen_quarter_diff, 100, DEVICE_CHOICE);
     EVENT = 930;
 }
 if (EVENT == 930)
