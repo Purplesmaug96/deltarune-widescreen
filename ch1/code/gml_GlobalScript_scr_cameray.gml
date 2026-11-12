@@ -1,3 +1,1 @@
-function cameray() {
-    return camera_get_view_y(view_camera[0]);
-}
+/hdd/DR_WIDE/common/code/gml_GlobalScript_scr_cameray.gml
