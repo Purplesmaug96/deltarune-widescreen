@@ -1,1 +1,0 @@
-/hdd/DR_WIDE/common/code/gml_GlobalScript_scr_camerax.gml
