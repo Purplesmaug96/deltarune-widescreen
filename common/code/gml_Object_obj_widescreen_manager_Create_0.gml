@@ -7,6 +7,8 @@ else {
     global.widescreen_width = ini_read_real("GRAPHICS", "widescreen_width", 0);
 }
 
+global.widescreen_half_width = global.widescreen_width / 2;
+
 if (!ini_key_exists("GRAPHICS", "widescreen_width")) {
     ini_write_real("GRAPHICS", "widescreen_width", 0);
 }
