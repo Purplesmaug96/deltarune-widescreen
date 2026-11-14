@@ -1,0 +1,1 @@
+../../../external/Deltarune-Debug-Plus/Chapter 1/code/gml_GlobalScript_draw_sprite_ext_flash.gml

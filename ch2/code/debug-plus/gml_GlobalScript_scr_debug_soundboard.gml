@@ -1,0 +1,1 @@
+../../../external/Deltarune-Debug-Plus/Chapter 2/code/gml_GlobalScript_scr_debug_soundboard.gml

@@ -1,0 +1,1 @@
+../../../external/Deltarune-Debug-Plus/Chapter 5/code/gml_Object_obj_dw_fcastle_yellow_miniboss_Draw_0.gml

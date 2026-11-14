@@ -1,0 +1,1 @@
+../../../external/Deltarune-Debug-Plus/Chapter 2/code/gml_Object_obj_ch2_room_mansion_entrance_Draw_64.gml

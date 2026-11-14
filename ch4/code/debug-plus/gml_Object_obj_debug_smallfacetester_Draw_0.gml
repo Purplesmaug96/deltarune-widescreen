@@ -1,0 +1,1 @@
+../../../external/Deltarune-Debug-Plus/Chapter 4/code/gml_Object_obj_debug_smallfacetester_Draw_0.gml

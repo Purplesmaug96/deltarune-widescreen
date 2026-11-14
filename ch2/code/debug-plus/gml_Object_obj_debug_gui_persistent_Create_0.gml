@@ -1,0 +1,1 @@
+../../../external/Deltarune-Debug-Plus/Chapter 2/code/gml_Object_obj_debug_gui_persistent_Create_0.gml

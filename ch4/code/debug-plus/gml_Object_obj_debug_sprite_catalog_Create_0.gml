@@ -1,0 +1,1 @@
+../../../external/Deltarune-Debug-Plus/Chapter 4/code/gml_Object_obj_debug_sprite_catalog_Create_0.gml

@@ -1,0 +1,1 @@
+../../../external/Deltarune-Debug-Plus/Chapter 1/code/gml_Object_obj_danmaku_analyzer_Draw_0.gml

@@ -1,0 +1,1 @@
+../../../external/Deltarune-Debug-Plus/Chapter 5/code/gml_Object_obj_battletester_Create_0.gml

@@ -1,0 +1,1 @@
+../../../external/Deltarune-Debug-Plus/Chapter 1/code/gml_Object_obj_battletester_Draw_64.gml

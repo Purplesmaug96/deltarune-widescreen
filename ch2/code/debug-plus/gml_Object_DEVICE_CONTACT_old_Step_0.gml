@@ -1,0 +1,1 @@
+../../../external/Deltarune-Debug-Plus/Chapter 2/code/gml_Object_DEVICE_CONTACT_old_Step_0.gml

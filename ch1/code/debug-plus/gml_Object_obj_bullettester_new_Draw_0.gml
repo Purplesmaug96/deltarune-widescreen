@@ -1,0 +1,1 @@
+../../../external/Deltarune-Debug-Plus/Chapter 1/code/gml_Object_obj_bullettester_new_Draw_0.gml

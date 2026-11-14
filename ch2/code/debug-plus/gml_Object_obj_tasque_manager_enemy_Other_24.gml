@@ -1,0 +1,1 @@
+../../../external/Deltarune-Debug-Plus/Chapter 2/code/gml_Object_obj_tasque_manager_enemy_Other_24.gml

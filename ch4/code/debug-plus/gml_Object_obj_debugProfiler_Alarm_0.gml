@@ -1,0 +1,1 @@
+../../../external/Deltarune-Debug-Plus/Chapter 4/code/gml_Object_obj_debugProfiler_Alarm_0.gml

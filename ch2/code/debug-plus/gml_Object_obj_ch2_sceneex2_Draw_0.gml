@@ -1,0 +1,1 @@
+../../../external/Deltarune-Debug-Plus/Chapter 2/code/gml_Object_obj_ch2_sceneex2_Draw_0.gml

@@ -1,0 +1,1 @@
+../../../external/Deltarune-Debug-Plus/Chapter 3/code/gml_Object_obj_debug_choicer_Draw_0.gml

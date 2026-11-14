@@ -1,0 +1,1 @@
+../../../external/Deltarune-Debug-Plus/Chapter 2/code/gml_Object_obj_sneo_wireheart_Collision_obj_yheart_shot.gml

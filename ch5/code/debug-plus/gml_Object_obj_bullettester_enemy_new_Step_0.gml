@@ -1,0 +1,1 @@
+../../../external/Deltarune-Debug-Plus/Chapter 5/code/gml_Object_obj_bullettester_enemy_new_Step_0.gml

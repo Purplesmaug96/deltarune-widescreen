@@ -1,0 +1,1 @@
+../../../external/Deltarune-Debug-Plus/Chapter 3/code/gml_Object_obj_shutta_enemy_Step_0.gml

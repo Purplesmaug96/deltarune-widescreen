@@ -1,0 +1,1 @@
+../../../external/Deltarune-Debug-Plus/Chapter 1/code/gml_GlobalScript_scr_damage_all_overworld.gml

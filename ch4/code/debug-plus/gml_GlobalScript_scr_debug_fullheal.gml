@@ -1,0 +1,1 @@
+../../../external/Deltarune-Debug-Plus/Chapter 4/code/gml_GlobalScript_scr_debug_fullheal.gml

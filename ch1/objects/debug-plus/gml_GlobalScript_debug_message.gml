@@ -1,0 +1,1 @@
+../../../external/Deltarune-Debug-Plus/Chapter 1/objects/gml_GlobalScript_debug_message.gml

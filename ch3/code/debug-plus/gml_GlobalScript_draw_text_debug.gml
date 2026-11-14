@@ -1,0 +1,1 @@
+../../../external/Deltarune-Debug-Plus/Chapter 3/code/gml_GlobalScript_draw_text_debug.gml
