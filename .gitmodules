@@ -1,0 +1,3 @@
+[submodule "external/Deltarune-Debug-Plus"]
+	path = external/Deltarune-Debug-Plus
+	url = https://github.com/barofsoap418/Deltarune-Debug-Plus
