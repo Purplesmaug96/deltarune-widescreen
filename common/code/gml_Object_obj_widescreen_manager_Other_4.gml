@@ -1,4 +1,4 @@
-room_width *= global.widescreen_mult;
+// room_width *= global.widescreen_mult;
 for (var i = 0; i < 8; i++) {
     if (view_enabled && view_visible[i])
     {
