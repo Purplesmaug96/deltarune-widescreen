@@ -43,6 +43,11 @@ if (!ini_key_exists("GRAPHICS", "hide_battleui_textbox")) {
     ini_write_real("GRAPHICS", "hide_battleui_textbox", global.hide_battleui_textbox);
 }
 
+global.move_dd_ch5 = ini_read_real("GRAPHICS", "move_dd_ch5", 1);
+if (!ini_key_exists("GRAPHICS", "move_dd_ch5")) {
+    ini_write_real("GRAPHICS", "move_dd_ch5", global.move_dd_ch5);
+}
+
 global.alt_attack_mode = ini_read_real("GAMEPLAY", "alt_attack_mode", 0);
 if (!ini_key_exists("GAMEPLAY", "alt_attack_mode")) {
     ini_write_real("GAMEPLAY", "alt_attack_mode", global.alt_attack_mode);
