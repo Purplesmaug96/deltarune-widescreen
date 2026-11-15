@@ -63,3 +63,8 @@ if (!ini_key_exists("DEBUG", "debug")) {
 ossafe_ini_close();
 
 global.widescreen_mod_ver = "0.1.0-dev"
+
+// So it doesnt crash on first frame
+global._debugplus_chemg_x = 0;
+global._debugplus_chemg_y = 0;
+global._debugplus_counter = 0;

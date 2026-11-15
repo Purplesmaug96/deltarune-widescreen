@@ -1,7 +1,8 @@
 if (scr_debug()) {
-    draw_set_font(fnt_comicsans);
+    // draw_set_font(fnt_comicsans);
     draw_set_colour(c_red);
-    draw_text(0, 0, "DELTARUNE Chapter " + string(global.chapter) + " Widescreen ver " + global.widescreen_mod_ver + "\nRoom: " + room_get_name(room) + "\ncamerax: " + string(camerax()) + "\ncameray: " + string(cameray()) + "\nraw_camerax: " + string(raw_camerax()) + "\nraw_cameray: " + string(raw_cameray()) + "\nwidescreen_width: " + string(global.widescreen_width) + "\nwidescreen_mult: " + string(global.widescreen_mult) + "\nwidescreen_div: " + string(global.widescreen_div) + "\nwidescreen_diff: " + string(global.widescreen_diff) + "\nTarget FPS: " + string(global.target_fps) + "\nFPS: " + string(fps));
+    draw_set_font(fnt_small);
+    scr_84_draw_text_outline(global._debugplus_chemg_x, global._debugplus_chemg_y + 16 + (8 * global._debugplus_counter), "DELTARUNE  Widescreen ver " + global.widescreen_mod_ver + "\nChapter: " + string(global.chapter) + "\ncamerax: " + string(camerax()) + "\ncameray: " + string(cameray()) + "\nraw_camerax: " + string(raw_camerax()) + "\nraw_cameray: " + string(raw_cameray()) + "\nwidescreen_width: " + string(global.widescreen_width) + "\nwidescreen_mult: " + string(global.widescreen_mult) + "\nwidescreen_div: " + string(global.widescreen_div) + "\nwidescreen_diff: " + string(global.widescreen_diff) + "\nTarget FPS: " + string(global.target_fps) + "\nFPS: " + string(fps));
     
     with (all) {
         if (object_index == obj_widescreen_manager) continue; 
@@ -14,8 +15,8 @@ if (scr_debug()) {
         
         var _gui_w = display_get_gui_width();
         var _gui_h = display_get_gui_height();
-        
-        var _gui_x = (x - _cam_x) * (_gui_w / _cam_w);
+        ;
+        var _gui_x = (x - _cam_x) * (_gui_w / _cam_w)
         var _gui_y = (y - _cam_y) * (_gui_h / _cam_h);
         
         var _gui_mx = (mouse_x - _cam_x) * (_gui_w / _cam_w);
