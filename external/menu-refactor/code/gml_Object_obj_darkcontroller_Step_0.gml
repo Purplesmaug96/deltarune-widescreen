@@ -193,15 +193,13 @@ if (global.interact == 5)
                 {
                     movenoise = 1
                     global.submenucoord[30] -= 1
-                    if (global.submenucoord[30] < 0)
-                        global.submenucoord[30] = 0
+                    if (global.submenucoord[30] < 0) global.submenucoord[30] = crlen;
                 }
                 if (down_p())
                 {
                     movenoise = 1
                     global.submenucoord[30] += 1
-                    if (global.submenucoord[30] > crlen)
-                        global.submenucoord[30] = crlen
+                    if (global.submenucoord[30] > crlen) global.submenucoord[30] = 0;
                 }
                 if (button1_p() && onebuffer < 0)
                 {
@@ -210,7 +208,6 @@ if (global.interact == 5)
                         configmenu_input_callback = configmenuregistry[global.submenucoord[30]].input_callback;
                         configmenu_input_callback_idx = global.submenucoord[30];
                     }
-                    selectnoise = 1;
                 }
                 if (button2_p() && twobuffer < 0)
                 {
@@ -1649,11 +1646,20 @@ if (cancelnoise == 1)
 	snd_play(snd_smallswing)
 	cancelnoise = 0
 }
+// debug_message(errornoisebuf);
+// debug_message(errornoise);
+if (errornoise == 1 && errornoisebuf < 0)
+{
+    snd_play(snd_error)
+    errornoisebuf = 15
+}
+errornoise = 0
 onebuffer -= 1
 twobuffer -= 1
 threebuffer -= 1
 upbuffer -= 1
 downbuffer -= 1
+errornoisebuf -= 1
 
 // moved to obj_time
 /*if (scr_debug())

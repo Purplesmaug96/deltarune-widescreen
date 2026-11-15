@@ -248,6 +248,9 @@ floweryshine = function()
     }
 };
 
+errornoise = 0
+errornoisebuf = -1
+
 configmenuregistry = []
 
 // configmenuregistry format:
@@ -262,6 +265,7 @@ configmenu_input_callback_idx = -1;
 
 configmenuregistry[array_length(configmenuregistry)] = { name: "Master Volume", func: function(index) {
         obj_darkcontroller.configmenuregistry[index].col = c_yellow;
+        obj_darkcontroller.selectnoise = 1;
     }, extratext: (": " + string(round(global.flag[17] * 100)) + "%"), col: c_white, input_callback: function(index, input) {
         switch(input) {
             case 6:
@@ -270,6 +274,7 @@ configmenuregistry[array_length(configmenuregistry)] = { name: "Master Volume", 
                 global.flag[17] -= button3_h() ? 0.01 : 0.02;
                 global.flag[17] = clamp(global.flag[17], 0, 1);
                 if (global.flag[17] != last) obj_darkcontroller.audchange = 1;
+                else obj_darkcontroller.errornoise = 1;
                 obj_darkcontroller.configmenuregistry[index].extratext = ": " + string(round(global.flag[17] * 100)) + "%";
                 break;
             case 7:
@@ -278,6 +283,7 @@ configmenuregistry[array_length(configmenuregistry)] = { name: "Master Volume", 
                 global.flag[17] += button3_h() ? 0.01 : 0.02;
                 global.flag[17] = clamp(global.flag[17], 0, 1);
                 if (global.flag[17] != last) obj_darkcontroller.audchange = 1;
+                else obj_darkcontroller.errornoise = 1;
                 obj_darkcontroller.configmenuregistry[index].extratext = ": " + string(round(global.flag[17] * 100)) + "%";
                 break;
             case 8:
@@ -293,6 +299,7 @@ configmenuregistry[array_length(configmenuregistry)] = { name: "Master Volume", 
 
 configmenuregistry[array_length(configmenuregistry)] = { name: "Music Volume", func: function(index) {
         obj_darkcontroller.configmenuregistry[index].col = c_yellow;
+        obj_darkcontroller.selectnoise = 1;
     }, extratext: (": " + string(round(global.flag[16] * 100)) + "%"), col: c_white, input_callback: function(index, input) {
         switch(input) {
             case 6:
@@ -300,7 +307,8 @@ configmenuregistry[array_length(configmenuregistry)] = { name: "Music Volume", f
                 var last = global.flag[16];
                 global.flag[16] -= button3_h() ? 0.01 : 0.02;
                 global.flag[16] = clamp(global.flag[16], 0, 1);
-                if (global.flag[16] != last) obj_darkcontroller.muschange = 1;
+                if (global.flag[16] != last) { obj_darkcontroller.muschange = 1; obj_darkcontroller.movenoise = 1; }
+                else obj_darkcontroller.errornoise = 1;
                 obj_darkcontroller.configmenuregistry[index].extratext = ": " + string(round(global.flag[16] * 100)) + "%";
                 break;
             case 7:
@@ -308,7 +316,8 @@ configmenuregistry[array_length(configmenuregistry)] = { name: "Music Volume", f
                 var last = global.flag[16];
                 global.flag[16] += button3_h() ? 0.01 : 0.02;
                 global.flag[16] = clamp(global.flag[16], 0, 1);
-                if (global.flag[16] != last) obj_darkcontroller.muschange = 1;
+                if (global.flag[16] != last) { obj_darkcontroller.muschange = 1; obj_darkcontroller.movenoise = 1; }
+                else obj_darkcontroller.errornoise = 1;
                 obj_darkcontroller.configmenuregistry[index].extratext = ": " + string(round(global.flag[16] * 100)) + "%";
                 break;
             case 8:
@@ -322,8 +331,10 @@ configmenuregistry[array_length(configmenuregistry)] = { name: "Music Volume", f
         }
     } };
 
+// Does work, but not that well
 /*configmenuregistry[array_length(configmenuregistry)] = { name: "Sound Volume", func: function(index) {
         obj_darkcontroller.configmenuregistry[index].col = c_yellow;
+        selectnoise = 1;
     }, extratext: (": " + string(round(global.flag[15] * 100)) + "%"), col: c_white, input_callback: function(index, input) {
         switch(input) {
             case 6:
@@ -332,6 +343,7 @@ configmenuregistry[array_length(configmenuregistry)] = { name: "Music Volume", f
                 global.flag[15] -= button3_h() ? 0.01 : 0.02;
                 global.flag[15] = clamp(global.flag[15], 0, 1);
                 if (global.flag[15] != last) obj_darkcontroller.sndchange = 1;
+                else obj_darkcontroller.errornoise = 1;
                 obj_darkcontroller.configmenuregistry[index].extratext = ": " + string(round(global.flag[15] * 100)) + "%";
                 break;
             case 7:
@@ -340,6 +352,7 @@ configmenuregistry[array_length(configmenuregistry)] = { name: "Music Volume", f
                 global.flag[15] += button3_h() ? 0.01 : 0.02;
                 global.flag[15] = clamp(global.flag[15], 0, 1);
                 if (global.flag[15] != last) obj_darkcontroller.sndchange = 1;
+                else obj_darkcontroller.errornoise = 1;
                 obj_darkcontroller.configmenuregistry[index].extratext = ": " + string(round(global.flag[15] * 100)) + "%";
                 break;
             case 8:

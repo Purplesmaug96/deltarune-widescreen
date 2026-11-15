@@ -127,7 +127,7 @@ if (global.menuno == 6)
             draw_set_color(c_white);
             draw_text(xx + 270, yy + 100, string_hash_to_newline(stringsetloc("CONFIG", "obj_darkcontroller_slash_Draw_0_gml_74_0")));
             
-            var scroll_max = array_length(configmenuregistry);
+            var scroll_max = array_length(configmenuregistry) - 1;
             var scroll_one_offset = (365 - 160) / scroll_max;
 
             var scroll_xoff = langopt(0, 50);
@@ -146,7 +146,8 @@ if (global.menuno == 6)
             
             var __drawcol__ = draw_get_colour();
 
-            for (var i = 0; i < scroll_max; i++) {
+            var cmlen = array_length(configmenuregistry);
+            for (var i = 0; i < cmlen; i++) {
                 draw_set_colour(configmenuregistry[i].col);
                 draw_text(_xPos, yy + 150 + (35 * i), configmenuregistry[i].name + configmenuregistry[i].extratext);
             }
