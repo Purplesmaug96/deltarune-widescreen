@@ -183,29 +183,97 @@ if (global.interact == 5)
     {
         if (global.submenu == 30)
         {
-            sndbuffer = 0
-            m_quit = 0
-            if (up_p())
-            {
-                movenoise = 1
-                global.submenucoord[30] -= 1
-                if (global.submenucoord[30] < 0)
-                    global.submenucoord[30] = 0
+            sndchange = 0;
+            muschange = 0;
+            audchange = 0;
+            m_quit = 0;
+            var crlen = array_length(configmenuregistry) - 1;
+            if (configmenu_input_callback == 0) {
+                if (up_p())
+                {
+                    movenoise = 1
+                    global.submenucoord[30] -= 1
+                    if (global.submenucoord[30] < 0)
+                        global.submenucoord[30] = 0
+                }
+                if (down_p())
+                {
+                    movenoise = 1
+                    global.submenucoord[30] += 1
+                    if (global.submenucoord[30] > crlen)
+                        global.submenucoord[30] = crlen
+                }
+                if (button1_p() && onebuffer < 0)
+                {
+                    configmenuregistry[global.submenucoord[30]].func(global.submenucoord[30]);
+                    if (configmenuregistry[global.submenucoord[30]].input_callback != 0) {
+                        configmenu_input_callback = configmenuregistry[global.submenucoord[30]].input_callback;
+                        configmenu_input_callback_idx = global.submenucoord[30];
+                    }
+                    selectnoise = 1;
+                }
+                if (button2_p() && twobuffer < 0)
+                {
+                    m_quit = 1
+                    cancelnoise = 1
+                }
             }
-            if (down_p())
-            {
-                movenoise = 1
-                global.submenucoord[30] += 1
-                if (global.submenucoord[30] > 6)
-                    global.submenucoord[30] = 6
+            else {
+                if (up_p())
+                {
+                    configmenu_input_callback(configmenu_input_callback_idx, 0);
+                }
+                if (down_p())
+                {
+                    configmenu_input_callback(configmenu_input_callback_idx, 1);
+                }
+                if (left_p())
+                {
+                    configmenu_input_callback(configmenu_input_callback_idx, 2);
+                }
+                if (right_p())
+                {
+                    configmenu_input_callback(configmenu_input_callback_idx, 3);
+                }
+                if (up_h())
+                {
+                    configmenu_input_callback(configmenu_input_callback_idx, 4);
+                }
+                if (down_h())
+                {
+                    configmenu_input_callback(configmenu_input_callback_idx, 5);
+                }
+                if (left_h())
+                {
+                    configmenu_input_callback(configmenu_input_callback_idx, 6);
+                }
+                if (right_h())
+                {
+                    configmenu_input_callback(configmenu_input_callback_idx, 7);
+                }
+                if (button1_p() && onebuffer < 0)
+                {
+                    configmenu_input_callback(configmenu_input_callback_idx, 8);
+                }
+                if (button2_p() && twobuffer < 0)
+                {
+                    configmenu_input_callback(configmenu_input_callback_idx, 9);
+                }
             }
-            if (button1_p() && onebuffer < 0)
+            if (sndchange == 1)
             {
+                audio_group_set_gain(1, global.flag[15], 0)
+                snd_play(snd_noise)
             }
-            if (button2_p() && twobuffer < 0)
+            if (muschange == 1)
             {
-                m_quit = 1
-                cancelnoise = 1
+                if (snd_is_playing(global.currentsong[1]))
+                    mus_volume(global.currentsong[1], getmusvol * global.flag[16], 0)
+            }
+            if (audchange == 1)
+            {
+                audio_set_master_gain(0, global.flag[17])
+                snd_play(snd_noise)
             }
             if (m_quit == 1)
             {
@@ -1476,7 +1544,7 @@ if (global.interact == 5)
 			}
 			if (global.menuno == 5)
 			{
-			    // global.menuno = 6
+			    global.menuno = 6
 				global.submenu = 30
 				global.submenucoord[30] = 0
 			}

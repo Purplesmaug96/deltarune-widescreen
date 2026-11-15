@@ -120,13 +120,14 @@ if (global.menuno == 6)
     scr_darkbox(xx + 50, (yy + lang_off[0]) - 10, xx + 590, yy + lang_off[2]);
     switch (global.submenu) {
         case 30:
+            var _xPos = (global.lang == "en") ? (xx + 170) : (xx + 150);
             var _heartXPos = (global.lang == "en") ? (xx + 145) : (xx + 125);
             draw_sprite(spr_heart, 0, _heartXPos, yy + 160 + (global.submenucoord[30] * 35));
 
             draw_set_color(c_white);
             draw_text(xx + 270, yy + 100, string_hash_to_newline(stringsetloc("CONFIG", "obj_darkcontroller_slash_Draw_0_gml_74_0")));
             
-            var scroll_max = 6;
+            var scroll_max = array_length(configmenuregistry);
             var scroll_one_offset = (365 - 160) / scroll_max;
 
             var scroll_xoff = langopt(0, 50);
@@ -142,6 +143,16 @@ if (global.menuno == 6)
             {
                 draw_sprite_ext(spr_morearrow, 0, xx + 551 + scroll_xoff, yy + 380 + (sin(cur_jewel / 12) * 3), 1, 1, 0, c_white, 1);
             }
+            
+            var __drawcol__ = draw_get_colour();
+
+            for (var i = 0; i < scroll_max; i++) {
+                draw_set_colour(configmenuregistry[i].col);
+                draw_text(_xPos, yy + 150 + (35 * i), configmenuregistry[i].name + configmenuregistry[i].extratext);
+            }
+
+            draw_set_colour(__drawcol__);
+
             break;
     }
 }
