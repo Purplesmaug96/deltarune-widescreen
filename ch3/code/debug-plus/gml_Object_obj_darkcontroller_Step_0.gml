@@ -1,1 +1,0 @@
-../../../external/Deltarune-Debug-Plus/Chapter 3/code/gml_Object_obj_darkcontroller_Step_0.gml
