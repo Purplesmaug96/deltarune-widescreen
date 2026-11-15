@@ -98,8 +98,8 @@ if (drawchar == 1)
         }
         if (drawmoney == 4 && tp > 0)
         {
-
-            var flowerydollar_on_its_own_row = global.move_dd_ch5;
+            // Only do flowerydollar_on_its_own_row when in widescreen mod
+            var flowerydollar_on_its_own_row = variable_global_exists("move_dd_ch5") ? global.move_dd_ch5 : false;
             if (global.move_dd_ch5) {
                 var maxstrlen = max(string_width(moneystring), max(string_width(flowerydollarsstring), string_width(pinkdollarsstring)));
                 flowerydollar_on_its_own_row = (global.widescreen_diff >= maxstrlen) && (global.widescreen_diff >= max(string_width(moneystring), string_width(flowerydollarsstring)) + string_width(moneystring));
@@ -110,6 +110,39 @@ if (drawchar == 1)
             draw_text(xx + 520, ((yy + tp) - 53) + 14, pinkdollarsstring);
             draw_text(xx + 520, ((yy + tp) - 81) + 14, flowerydollarsstring);
         }
+    }
+}
+if (global.menuno == 6)
+{
+    var lang_off = langopt([90, 410, 420], [85, 412, 422]);
+    draw_set_color(c_black);
+    ossafe_fill_rectangle(xx + 60, yy + lang_off[0], xx + 580, yy + lang_off[1], false);
+    scr_darkbox(xx + 50, (yy + lang_off[0]) - 10, xx + 590, yy + lang_off[2]);
+    switch (global.submenu) {
+        case 30:
+            var _heartXPos = (global.lang == "en") ? (xx + 145) : (xx + 125);
+            draw_sprite(spr_heart, 0, _heartXPos, yy + 160 + (global.submenucoord[30] * 35));
+
+            draw_set_color(c_white);
+            draw_text(xx + 270, yy + 100, string_hash_to_newline(stringsetloc("CONFIG", "obj_darkcontroller_slash_Draw_0_gml_74_0")));
+            
+            var scroll_max = 6;
+            var scroll_one_offset = (365 - 160) / scroll_max;
+
+            var scroll_xoff = langopt(0, 50);
+            draw_set_color(c_dkgray);
+            ossafe_fill_rectangle(xx + 555 + scroll_xoff, yy + 160, xx + 560 + scroll_xoff, yy + 165 + (scroll_max * scroll_one_offset), false);
+            draw_set_color(c_white);
+            ossafe_fill_rectangle(xx + 555 + scroll_xoff, (yy + 160 + (global.submenucoord[30] * scroll_one_offset)), xx + 560 + scroll_xoff, yy + 165 + (global.submenucoord[30] * scroll_one_offset), false);
+            if (scroll_max > 0)
+            {
+                draw_sprite_ext(spr_morearrow, 0, xx + 551 + scroll_xoff, (yy + 150) - (sin(cur_jewel / 12) * 3), 1, -1, 0, c_white, 1);
+            }
+            if (scroll_max)
+            {
+                draw_sprite_ext(spr_morearrow, 0, xx + 551 + scroll_xoff, yy + 380 + (sin(cur_jewel / 12) * 3), 1, 1, 0, c_white, 1);
+            }
+            break;
     }
 }
 if (global.menuno == 5)
@@ -208,7 +241,7 @@ if (global.menuno == 5)
                 }
                 if (scr_flag_get_ext(1762, 0, 2) == 0)
                 {
-                    if (global.menuno == 5 && global.submenu == 30 && global.submenucoord[30] == 2)
+                    if ((global.menuno == 5 || global.menuno == 6) && global.submenu == 30 && global.submenucoord[30] == 2)
                     {
                         scr_flag_set_ext(1762, 0, 1, 2);
                     }
