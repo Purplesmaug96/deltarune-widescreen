@@ -251,6 +251,8 @@ floweryshine = function()
 errornoise = 0
 errornoisebuf = -1
 
+controlmenuhack = 0;
+
 configmenuregistry = []
 
 // configmenuregistry format:
@@ -365,6 +367,18 @@ configmenuregistry[array_length(configmenuregistry)] = { name: "Music Volume", f
                 break;
         }
     } };*/
+
+configmenuregistry[array_length(configmenuregistry)] = { name: "Controls", func: function(index) {
+    obj_darkcontroller.selectnoise = 1;
+    // TODO: Make a proper new controls menu
+    obj_darkcontroller.controlmenuhack = 1;
+    global.menuno = 5;
+    global.submenu = 35;
+    global.submenucoord[35] = 0;
+    obj_darkcontroller.control_select_con = 0;
+    obj_darkcontroller.control_flash_timer = 0;
+    obj_darkcontroller.onebuffer = 0;
+    }, extratext: "", col: c_white, input_callback: 0 };
 
 configmenuregistry[array_length(configmenuregistry)] = { name: "Exit", func: function(index) {
     obj_darkcontroller.m_quit = 1;

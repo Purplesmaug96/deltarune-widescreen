@@ -772,9 +772,14 @@ if (global.interact == 5)
 				selectnoise = 1
 				control_select_con = 0
 			}
+			if (controlmenuhack == 1 && button2_p() && twobuffer < 0)
+            {
+                controls_quitmenu = 1;
+            }
 			if (controls_quitmenu == 1)
 			{
-				selectnoise = 1
+				if (controlmenuhack == 0) selectnoise = 1
+				else cancelnoise = 1
 				onebuffer = 2
 				twobuffer = 2
 				ini_open("keyconfig_" + string(global.filechoice) + ".ini")
@@ -788,6 +793,10 @@ if (global.interact == 5)
 				control_select_con = 0
 				global.submenucoord[35] = 0
 				global.submenu = 30
+				
+				if (controlmenuhack != 0) {
+				    global.menuno = 6
+				}
 			}
 		}
 		if (global.is_console && global.submenu == 36)
