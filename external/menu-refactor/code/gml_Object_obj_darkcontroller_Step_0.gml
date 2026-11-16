@@ -192,14 +192,24 @@ if (global.interact == 5)
                 if (up_p())
                 {
                     movenoise = 1
-                    global.submenucoord[30] -= 1
-                    if (global.submenucoord[30] < 0) global.submenucoord[30] = crlen;
+                    global.submenucoord[30]--;
+                    if ((global.submenucoord[30] - configmenuscrollstart) < 0) configmenuscrollstart--;
+
+                    if (global.submenucoord[30] < 0) {
+                        global.submenucoord[30] = crlen;
+                        configmenuscrollstart = max(crlen - 6, 0);
+                    }
                 }
                 if (down_p())
                 {
                     movenoise = 1
-                    global.submenucoord[30] += 1
-                    if (global.submenucoord[30] > crlen) global.submenucoord[30] = 0;
+                    global.submenucoord[30]++;
+                    if (global.submenucoord[30] > (configmenuscrollstart + 6)) configmenuscrollstart++;
+
+                    if (global.submenucoord[30] > crlen) {
+                        global.submenucoord[30] = 0;
+                        configmenuscrollstart = 0;
+                    }
                 }
                 if (button1_p() && onebuffer < 0)
                 {

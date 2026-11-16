@@ -253,6 +253,8 @@ errornoisebuf = -1
 
 controlmenuhack = 0;
 
+configmenuscrollstart = 0;
+
 configmenuregistry = []
 
 // configmenuregistry format:
@@ -459,7 +461,7 @@ configmenuregistry[array_length(configmenuregistry)] = { name: "Fullscreen", fun
     obj_darkcontroller.selectnoise = 1;
     
     with (obj_time)
-        fullscreen_toggle = 1
+        fullscreen_toggle = 1;
     
     // TODO: This is hacky
     if (window_get_fullscreen()) {
@@ -469,6 +471,11 @@ configmenuregistry[array_length(configmenuregistry)] = { name: "Fullscreen", fun
         obj_darkcontroller.configmenuregistry[index].extratext = obj_darkcontroller._str_on;
     }
 }, extratext: (window_get_fullscreen() ? obj_darkcontroller._str_on : obj_darkcontroller._str_off), col: c_white, input_callback: 0, draw_callback: 0 };
+
+configmenuregistry[array_length(configmenuregistry)] = { name: "Return to Title", func: function(index) {
+    game_restart_true();
+    }, extratext: "", col: c_white, input_callback: 0, draw_callback: 0 };
+
 
 configmenuregistry[array_length(configmenuregistry)] = { name: "Exit", func: function(index) {
     obj_darkcontroller.m_quit = 1;

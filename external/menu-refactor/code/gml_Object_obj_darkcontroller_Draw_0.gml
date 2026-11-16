@@ -123,7 +123,6 @@ if (global.menuno == 6)
             var _xPos = (global.lang == "en") ? (xx + 170) : (xx + 150);
             var _selectXPos = (global.lang == "ja" && global.is_console) ? (xx + 385) : (xx + 430);
             var _heartXPos = (global.lang == "en") ? (xx + 145) : (xx + 125);
-            draw_sprite(spr_heart, 0, _heartXPos, yy + 160 + (global.submenucoord[30] * 35));
 
             draw_set_color(c_white);
             draw_text(xx + 270, yy + 100, string_hash_to_newline(stringsetloc("CONFIG", "obj_darkcontroller_slash_Draw_0_gml_74_0")));
@@ -136,20 +135,22 @@ if (global.menuno == 6)
             ossafe_fill_rectangle(xx + 555 + scroll_xoff, yy + 160, xx + 560 + scroll_xoff, yy + 165 + (scroll_max * scroll_one_offset), false);
             draw_set_color(c_white);
             ossafe_fill_rectangle(xx + 555 + scroll_xoff, (yy + 160 + (global.submenucoord[30] * scroll_one_offset)), xx + 560 + scroll_xoff, yy + 165 + (global.submenucoord[30] * scroll_one_offset), false);
-            if (scroll_max > 0)
+
+            if (configmenuscrollstart > 0)
             {
                 draw_sprite_ext(spr_morearrow, 0, xx + 551 + scroll_xoff, (yy + 150) - (sin(cur_jewel / 12) * 3), 1, -1, 0, c_white, 1);
             }
-            if (scroll_max)
+            if ((configmenuscrollstart + 6) < scroll_max)
             {
                 draw_sprite_ext(spr_morearrow, 0, xx + 551 + scroll_xoff, yy + 380 + (sin(cur_jewel / 12) * 3), 1, 1, 0, c_white, 1);
             }
-            
-            var __drawcol__ = draw_get_colour();
 
+            var __drawcol__ = draw_get_colour();
             var cmlen = array_length(configmenuregistry);
-            for (var i = 0; i < cmlen; i++) {
-                var _yPos = yy + 150 + (35 * i)
+            for (var i = configmenuscrollstart; i < configmenuscrollstart + 7; i++) {
+                if (i >= cmlen) break;
+                var _yPos = yy + 150 + (35 * (i - configmenuscrollstart));
+                if (i == global.submenucoord[30]) draw_sprite(spr_heart, 0, _heartXPos, _yPos + 10);
                 if (configmenuregistry[i].draw_callback != 0) {
                     configmenuregistry[i].draw_callback(i, configmenuregistry[i].name, configmenuregistry[i].extratext, xx, yy, _xPos, _yPos, _selectXPos, configmenuregistry[i].col);
                 }
