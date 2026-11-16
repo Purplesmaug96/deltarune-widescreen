@@ -472,6 +472,16 @@ configmenuregistry[array_length(configmenuregistry)] = { name: "Fullscreen", fun
     }
 }, extratext: (window_get_fullscreen() ? obj_darkcontroller._str_on : obj_darkcontroller._str_off), col: c_white, input_callback: 0, draw_callback: 0 };
 
+
+configmenuregistry[array_length(configmenuregistry)] = { name: "Auto-Run", func: function(index) {
+    if (!global.flag[11]) obj_darkcontroller.selectnoise = 1;
+    else obj_darkcontroller.cancelnoise = 1;
+
+    global.flag[11] = !global.flag[11];
+
+    obj_darkcontroller.configmenuregistry[index].extratext = global.flag[11] == 0 ? obj_darkcontroller._str_off : obj_darkcontroller._str_on;
+}, extratext: global.flag[11] == 0 ? obj_darkcontroller._str_off : obj_darkcontroller._str_on, col: c_white, input_callback: 0, draw_callback: 0 };
+
 configmenuregistry[array_length(configmenuregistry)] = { name: "Return to Title", func: function(index) {
     game_restart_true();
     }, extratext: "", col: c_white, input_callback: 0, draw_callback: 0 };
