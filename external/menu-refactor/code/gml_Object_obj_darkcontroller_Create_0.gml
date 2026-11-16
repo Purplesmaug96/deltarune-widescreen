@@ -385,7 +385,7 @@ _str_on = stringsetloc("ON", "obj_darkcontroller_slash_Draw_0_gml_140_0");
 _str_off = stringsetloc("OFF", "obj_darkcontroller_slash_Draw_0_gml_141_0");
 
 // global.flag[1391] is voiceclips
-configmenuregistry[array_length(configmenuregistry)] = { name: "Voice Clips: ", func: function(index) {
+configmenuregistry[array_length(configmenuregistry)] = { name: "Voice Clips", func: function(index) {
     global.flag[1391] = global.flag[1391] == 0 ? 1 : 0;
     obj_darkcontroller.configmenuregistry[index].extratext = (global.flag[1391] == 0 ? obj_darkcontroller._str_on : obj_darkcontroller._str_off);
     
@@ -454,6 +454,21 @@ if (global.flag[24]) {
                 draw_set_font(mem.f);
     } };
 }
+
+configmenuregistry[array_length(configmenuregistry)] = { name: "Fullscreen", func: function(index) {
+    obj_darkcontroller.selectnoise = 1;
+    
+    with (obj_time)
+        fullscreen_toggle = 1
+    
+    // TODO: This is hacky
+    if (window_get_fullscreen()) {
+        obj_darkcontroller.configmenuregistry[index].extratext = obj_darkcontroller._str_off;
+    }
+    else {
+        obj_darkcontroller.configmenuregistry[index].extratext = obj_darkcontroller._str_on;
+    }
+}, extratext: (window_get_fullscreen() ? obj_darkcontroller._str_on : obj_darkcontroller._str_off), col: c_white, input_callback: 0, draw_callback: 0 };
 
 configmenuregistry[array_length(configmenuregistry)] = { name: "Exit", func: function(index) {
     obj_darkcontroller.m_quit = 1;
