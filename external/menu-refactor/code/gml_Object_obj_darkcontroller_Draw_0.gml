@@ -121,6 +121,7 @@ if (global.menuno == 6)
     switch (global.submenu) {
         case 30:
             var _xPos = (global.lang == "en") ? (xx + 170) : (xx + 150);
+            var _selectXPos = (global.lang == "ja" && global.is_console) ? (xx + 385) : (xx + 430);
             var _heartXPos = (global.lang == "en") ? (xx + 145) : (xx + 125);
             draw_sprite(spr_heart, 0, _heartXPos, yy + 160 + (global.submenucoord[30] * 35));
 
@@ -148,8 +149,15 @@ if (global.menuno == 6)
 
             var cmlen = array_length(configmenuregistry);
             for (var i = 0; i < cmlen; i++) {
-                draw_set_colour(configmenuregistry[i].col);
-                draw_text(_xPos, yy + 150 + (35 * i), configmenuregistry[i].name + configmenuregistry[i].extratext);
+                var _yPos = yy + 150 + (35 * i)
+                if (configmenuregistry[i].draw_callback != 0) {
+                    configmenuregistry[i].draw_callback(i, configmenuregistry[i].name, configmenuregistry[i].extratext, xx, yy, _xPos, _yPos, _selectXPos, configmenuregistry[i].col);
+                }
+                else {
+                    draw_set_colour(configmenuregistry[i].col);
+                    draw_text(_xPos, _yPos, configmenuregistry[i].name);
+                    draw_text(_selectXPos, _yPos, configmenuregistry[i].extratext);
+                }
             }
 
             draw_set_colour(__drawcol__);
@@ -246,10 +254,10 @@ if (global.menuno == 5)
                 var feathSet0 = stringsetloc("Jump: Cancel\nAttack: Confirm", "obj_darkcontroller_slash_Draw_0_gml_188_0");
                 var feathSet1 = stringsetloc("Jump: Confirm\nAttack: Cancel", "obj_darkcontroller_slash_Draw_0_gml_189_0");
                 var st = [feathSet0, feathSet1];
-                var col = 16777215;
+                var col = 0xFFFFFF;
                 if (scr_flag_get_ext(1762, 0, 2) == 0)
                 {
-                    col = 16776960;
+                    col = 0xFFFF00;
                 }
                 if (scr_flag_get_ext(1762, 0, 2) == 0)
                 {

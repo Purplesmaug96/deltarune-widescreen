@@ -261,6 +261,7 @@ configmenuregistry = []
 // extratext: string
 // col: c_*
 // input_callback: 0 / function(index, input)
+// draw_callback: 0 / function(index, text, extratext, xx, yy, drawpos_x, drawpos_y, select_drawpos_x, col)
 
 configmenu_input_callback = 0;
 configmenu_input_callback_idx = -1;
@@ -268,7 +269,7 @@ configmenu_input_callback_idx = -1;
 configmenuregistry[array_length(configmenuregistry)] = { name: "Master Volume", func: function(index) {
         obj_darkcontroller.configmenuregistry[index].col = c_yellow;
         obj_darkcontroller.selectnoise = 1;
-    }, extratext: (": " + string(round(global.flag[17] * 100)) + "%"), col: c_white, input_callback: function(index, input) {
+    }, extratext: (string(round(global.flag[17] * 100)) + "%"), col: c_white, input_callback: function(index, input) {
         switch(input) {
             case 6:
                 // Left (held)
@@ -277,7 +278,7 @@ configmenuregistry[array_length(configmenuregistry)] = { name: "Master Volume", 
                 global.flag[17] = clamp(global.flag[17], 0, 1);
                 if (global.flag[17] != last) obj_darkcontroller.audchange = 1;
                 else obj_darkcontroller.errornoise = 1;
-                obj_darkcontroller.configmenuregistry[index].extratext = ": " + string(round(global.flag[17] * 100)) + "%";
+                obj_darkcontroller.configmenuregistry[index].extratext = string(round(global.flag[17] * 100)) + "%";
                 break;
             case 7:
                 // Right (held)
@@ -286,7 +287,7 @@ configmenuregistry[array_length(configmenuregistry)] = { name: "Master Volume", 
                 global.flag[17] = clamp(global.flag[17], 0, 1);
                 if (global.flag[17] != last) obj_darkcontroller.audchange = 1;
                 else obj_darkcontroller.errornoise = 1;
-                obj_darkcontroller.configmenuregistry[index].extratext = ": " + string(round(global.flag[17] * 100)) + "%";
+                obj_darkcontroller.configmenuregistry[index].extratext = string(round(global.flag[17] * 100)) + "%";
                 break;
             case 8:
             case 9:
@@ -297,12 +298,12 @@ configmenuregistry[array_length(configmenuregistry)] = { name: "Master Volume", 
                 obj_darkcontroller.configmenuregistry[index].col = c_white;
                 break;
         }
-    } };
+}, draw_callback: 0 };
 
 configmenuregistry[array_length(configmenuregistry)] = { name: "Music Volume", func: function(index) {
         obj_darkcontroller.configmenuregistry[index].col = c_yellow;
         obj_darkcontroller.selectnoise = 1;
-    }, extratext: (": " + string(round(global.flag[16] * 100)) + "%"), col: c_white, input_callback: function(index, input) {
+    }, extratext: (string(round(global.flag[16] * 100)) + "%"), col: c_white, input_callback: function(index, input) {
         switch(input) {
             case 6:
                 // Left (held)
@@ -311,7 +312,7 @@ configmenuregistry[array_length(configmenuregistry)] = { name: "Music Volume", f
                 global.flag[16] = clamp(global.flag[16], 0, 1);
                 if (global.flag[16] != last) { obj_darkcontroller.muschange = 1; obj_darkcontroller.movenoise = 1; }
                 else obj_darkcontroller.errornoise = 1;
-                obj_darkcontroller.configmenuregistry[index].extratext = ": " + string(round(global.flag[16] * 100)) + "%";
+                obj_darkcontroller.configmenuregistry[index].extratext = string(round(global.flag[16] * 100)) + "%";
                 break;
             case 7:
                 // Right (held)
@@ -320,7 +321,7 @@ configmenuregistry[array_length(configmenuregistry)] = { name: "Music Volume", f
                 global.flag[16] = clamp(global.flag[16], 0, 1);
                 if (global.flag[16] != last) { obj_darkcontroller.muschange = 1; obj_darkcontroller.movenoise = 1; }
                 else obj_darkcontroller.errornoise = 1;
-                obj_darkcontroller.configmenuregistry[index].extratext = ": " + string(round(global.flag[16] * 100)) + "%";
+                obj_darkcontroller.configmenuregistry[index].extratext = string(round(global.flag[16] * 100)) + "%";
                 break;
             case 8:
             case 9:
@@ -331,7 +332,7 @@ configmenuregistry[array_length(configmenuregistry)] = { name: "Music Volume", f
                 obj_darkcontroller.configmenuregistry[index].col = c_white;
                 break;
         }
-    } };
+}, draw_callback: 0 };
 
 // Does work, but not that well
 /*configmenuregistry[array_length(configmenuregistry)] = { name: "Sound Volume", func: function(index) {
@@ -366,7 +367,7 @@ configmenuregistry[array_length(configmenuregistry)] = { name: "Music Volume", f
                 obj_darkcontroller.configmenuregistry[index].col = c_white;
                 break;
         }
-    } };*/
+}, draw_callback: 0 };*/
 
 configmenuregistry[array_length(configmenuregistry)] = { name: "Controls", func: function(index) {
     obj_darkcontroller.selectnoise = 1;
@@ -378,15 +379,15 @@ configmenuregistry[array_length(configmenuregistry)] = { name: "Controls", func:
     obj_darkcontroller.control_select_con = 0;
     obj_darkcontroller.control_flash_timer = 0;
     obj_darkcontroller.onebuffer = 0;
-    }, extratext: "", col: c_white, input_callback: 0 };
+}, extratext: "", col: c_white, input_callback: 0, draw_callback: 0 };
 
 _str_on = stringsetloc("ON", "obj_darkcontroller_slash_Draw_0_gml_140_0");
 _str_off = stringsetloc("OFF", "obj_darkcontroller_slash_Draw_0_gml_141_0");
 
 // global.flag[1391] is voiceclips
-configmenuregistry[array_length(configmenuregistry)] = { name: "Voice Clips", func: function(index) {
+configmenuregistry[array_length(configmenuregistry)] = { name: "Voice Clips: ", func: function(index) {
     global.flag[1391] = global.flag[1391] == 0 ? 1 : 0;
-    obj_darkcontroller.configmenuregistry[index].extratext = ": " + (global.flag[1391] == 0 ? obj_darkcontroller._str_on : obj_darkcontroller._str_off);
+    obj_darkcontroller.configmenuregistry[index].extratext = (global.flag[1391] == 0 ? obj_darkcontroller._str_on : obj_darkcontroller._str_off);
     
     if (global.flag[1391] == 1) obj_darkcontroller.cancelnoise = 1;
     else obj_darkcontroller.selectnoise = 1;
@@ -395,10 +396,66 @@ configmenuregistry[array_length(configmenuregistry)] = { name: "Voice Clips", fu
     if (global.flag[1391] == 0) {
         snd_play(choose(snd_flowery_voiceclip_jarona1, snd_flowery_voiceclip_jarona2, snd_flowery_voiceclip_jarona3, snd_flowery_voiceclip_jarona4, snd_flowery_voiceclip_glue, snd_flowery_voiceclip_try_my_flavor, snd_flowery_voiceclip_mostlys, snd_flowery_voiceclip_hey, snd_flowery_voiceclip_itsmeflowery, snd_flowery_voiceclip_stingus, snd_flowery_voiceclip_mysterious_wind, snd_flowery_voiceclip_smile_again, snd_flowery_voiceclip_hereicomesanfrandisc, snd_flowery_voiceclip_hereicomesanfrandisco_strong, snd_flowery_voiceclip_great_style, snd_flowery_voiceclip_hah, snd_flowery_voiceclip_leaf_it_to_me, snd_flowery_voiceclip_flowers_blooms_in_your_heart, snd_flowery_voiceclip_hoo, snd_flowery_voiceclip_theyre_eating_my_flesh, snd_flowery_voiceclip_minipeppers, snd_flowery_voiceclip_blingo_blizzard, snd_flowery_voiceclip_your_dad, snd_flowery_voiceclip_the_diner));
     }
-    }, extratext: ": " + (global.flag[1391] == 0 ? obj_darkcontroller._str_on : obj_darkcontroller._str_off), col: c_white, input_callback: 0 };
+}, extratext: (global.flag[1391] == 0 ? obj_darkcontroller._str_on : obj_darkcontroller._str_off), col: c_white, input_callback: 0, draw_callback: 0 };
 
+
+// TODO: Change this at runtime when the Petal Feather is taken away/given
+if (global.flag[24]) {
+    configmenuregistry[array_length(configmenuregistry)] = { name: "Feather", func: function(index) {
+        obj_darkcontroller.selectnoise = 1;
+        
+        global.flag[25] = global.flag[25] == 0 ? 1 : 0;
+        
+        obj_darkcontroller.configmenuregistry[index].extratext = global.flag[25] == 0 ? stringsetloc("Jump: Cancel\nAttack: Confirm", "obj_darkcontroller_slash_Draw_0_gml_188_0") : stringsetloc("Jump: Confirm\nAttack: Cancel", "obj_darkcontroller_slash_Draw_0_gml_189_0");
+        }, extratext: global.flag[25] == 0 ? stringsetloc("Jump: Cancel\nAttack: Confirm", "obj_darkcontroller_slash_Draw_0_gml_188_0") : stringsetloc("Jump: Confirm\nAttack: Cancel", "obj_darkcontroller_slash_Draw_0_gml_189_0"), col: c_white, input_callback: 0, draw_callback: function(index, text, extratext, xx, yy, drawpos_x, drawpos_y, select_drawpos_x, col) {
+                // Purplesmaug96: Unsure where this is used, tell me if you know!
+                /*
+                var col = 0xFFFFFF;
+                if (scr_flag_get_ext(1762, 0, 2) == 0)
+                {
+                    col = 0xFFFF00;
+                }
+                if (scr_flag_get_ext(1762, 0, 2) == 0)
+                {
+                    if (global.menuno == 6 && global.submenu == 30 && global.submenucoord[30] == 2)
+                    {
+                        scr_flag_set_ext(1762, 0, 1, 2);
+                    }
+                }
+                else if (scr_flag_get_ext(1762, 0, 2) == 1)
+                {
+                    obj_darkcontroller.yellowed++;
+                    var __endtime = 15;
+                    if (obj_darkcontroller.yellowed >= __endtime)
+                    {
+                        obj_darkcontroller.yellowed = 0;
+                        scr_flag_set_ext(1762, 0, 2, 2);
+                    }
+                    else
+                    {
+                        col = merge_color(c_yellow, c_white, lerp_inout_cubic(0, 1, yellowed / __endtime));
+                    }
+                }
+                */
+                draw_set_color(col);
+                draw_text(drawpos_x, drawpos_y, text);
+                var mem = 
+                {
+                    h: draw_get_halign(),
+                    v: draw_get_valign(),
+                    f: draw_get_font()
+                };
+                draw_set_halign(fa_left);
+                draw_set_valign(fa_middle);
+                draw_set_font(scr_84_get_font("main"));
+                draw_text(select_drawpos_x, drawpos_y + 16, extratext);
+                draw_set_halign(mem.h);
+                draw_set_valign(mem.v);
+                draw_set_font(mem.f);
+    } };
+}
 
 configmenuregistry[array_length(configmenuregistry)] = { name: "Exit", func: function(index) {
     obj_darkcontroller.m_quit = 1;
     obj_darkcontroller.cancelnoise = 1;
-    }, extratext: "", col: c_white, input_callback: 0 };
+    }, extratext: "", col: c_white, input_callback: 0, draw_callback: 0 };
