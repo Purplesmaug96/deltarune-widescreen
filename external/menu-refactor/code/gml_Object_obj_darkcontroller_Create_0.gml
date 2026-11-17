@@ -457,6 +457,8 @@ if (global.flag[24]) {
     } };
 }
 
+// TODO: Ralseis
+
 configmenuregistry[array_length(configmenuregistry)] = { name: "Fullscreen", func: function(index) {
     obj_darkcontroller.selectnoise = 1;
     
