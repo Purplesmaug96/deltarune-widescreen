@@ -255,6 +255,8 @@ controlmenuhack = 0;
 
 configmenuscrollstart = 0;
 
+reloadconfigmenu = function() {
+
 configmenuregistry = []
 
 // configmenuregistry format:
@@ -400,8 +402,6 @@ configmenuregistry[array_length(configmenuregistry)] = { name: "Voice Clips", fu
     }
 }, extratext: (global.flag[1391] == 0 ? obj_darkcontroller._str_on : obj_darkcontroller._str_off), col: c_white, input_callback: 0, draw_callback: 0 };
 
-
-// TODO: Change this at runtime when the Petal Feather is taken away/given
 if (global.flag[24]) {
     configmenuregistry[array_length(configmenuregistry)] = { name: "Feather", func: function(index) {
         obj_darkcontroller.selectnoise = 1;
@@ -491,3 +491,7 @@ configmenuregistry[array_length(configmenuregistry)] = { name: "Exit", func: fun
     obj_darkcontroller.m_quit = 1;
     obj_darkcontroller.cancelnoise = 1;
     }, extratext: "", col: c_white, input_callback: 0, draw_callback: 0 };
+
+}
+
+reloadconfigmenu();
