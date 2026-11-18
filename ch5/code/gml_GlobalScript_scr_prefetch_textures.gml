@@ -9,12 +9,18 @@ function scr_prefetch_textures()
         }
         texture_groups[array_length(texture_groups)] = "Console";
     }
-    array_push(texture_groups, "NoAutoCrop");
+
+    // It's just Tenna??
+    var texture_groups_nonblock = ["NoAutoCrop"];
+
     if (global.floortex_load_mode == 1)
     {
-        array_push(texture_groups, "ftex_castle_left", "ftex_castle_right", "ftex_castle_top", "ftex_cliffs", "ftex_garden");
+        array_push(texture_groups_nonblock, "ftex_castle_left", "ftex_castle_right", "ftex_castle_top", "ftex_cliffs", "ftex_garden");
     }
-    array_push(texture_groups, "unusedAssets");
+
+    // TODO: Figure out if this is actually unused or not...
+    array_push(texture_groups_nonblock, "unusedAssets");
+
     for (var i = 0; i < array_length(texture_groups); i++)
     {
         if (global.async_texture_loads) {
@@ -32,7 +38,25 @@ function scr_prefetch_textures()
             }
         }
     }
-    
+
+    for (var i = 0; i < array_length(texture_groups_nonblock); i++)
+    {
+        if (global.async_texture_loads) {
+            texturegroup_load(texture_groups_nonblock[i]);
+        }
+        else {
+            var _tex_array = texturegroup_get_textures(texture_groups_nonblock[i]);
+            for (var j = 0; j < array_length(_tex_array); j++)
+            {
+                if (texture_is_ready(_tex_array[j]))
+                {
+                    continue;
+                }
+                texture_prefetch(_tex_array[j]);
+            }
+        }
+    }
+
     if (global.async_texture_loads) {
         __scr_prefetch_textures_texture_groups = texture_groups;
         __scr_prefetch_textures_check_status = function() {
