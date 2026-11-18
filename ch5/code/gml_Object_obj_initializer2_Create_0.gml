@@ -56,6 +56,11 @@ if (!instance_exists(obj_widescreen_manager))
 {
     global.widescreen_manager = instance_create(0, 0, obj_widescreen_manager);
 }
+global.chapter = 5;
+____________done = false;
+global.flag = [];
+global.flag[9999] = 0;
+global.chemg_god_mode = false;
 global.screen_border_id = stringsetloc("Dynamic", "obj_initializer2_slash_Create_0_gml_22_0");
 global.screen_border_active = true;
 global.screen_border_alpha = 0;
@@ -78,38 +83,6 @@ else if (os_type == os_ps4 || os_type == os_ps5)
 global.pause_plat = false;
 global.game_won = false;
 global.parallax_focal_length = 160;
-scr_input_manager_init();
-if (global.is_console)
-{
-    ossafe_init();
-    ossafe_savedata_load();
-    if (os_type == os_ps4 || os_type == os_ps5)
-    {
-        window_set_cursor(cr_none);
-    }
-}
-else
-{
-    global_flagname_init();
-    scr_84_init_localization();
-    pal_swap_init_system(9);
-    global.damagefont = font_add_sprite_ext(spr_numbersfontbig, "0123456789", 20, 0);
-    global.damagefontgold = font_add_sprite_ext(spr_numbersfontbig_gold, "0123456789+-%/F$", 20, 0);
-    global.damagefontpink = font_add_sprite_ext(spr_numbersfontbig_pink, "0123456789+-%/P$", 20, 0);
-    global.hpfont = font_add_sprite_ext(spr_numbersfontsmall, "0123456789-+", 0, 2);
-    scr_gamestart();
-    for (i = 0; i < 100; i += 1)
-    {
-        global.tempflag[i] = 0;
-    }
-    global.heartx = 300;
-    global.hearty = 220;
-    scr_load_audio();
-    if (!instance_exists(obj_time))
-    {
-        instance_create(0, 0, obj_time);
-    }
-}
 if (!variable_global_exists("entrance_animation"))
 {
     global.start_in_platmode = UnknownEnum.Value_0;

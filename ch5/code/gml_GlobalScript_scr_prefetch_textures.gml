@@ -32,4 +32,18 @@ function scr_prefetch_textures()
             }
         }
     }
+    
+    if (global.async_texture_loads) {
+        __scr_prefetch_textures_texture_groups = texture_groups;
+        __scr_prefetch_textures_check_status = function() {
+            for (var j = 0; j < array_length(__scr_prefetch_textures_texture_groups); j++)
+            {
+                if (texturegroup_get_status(__scr_prefetch_textures_texture_groups[j]) < /*texturegroup_status_loaded*/2)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
 }
