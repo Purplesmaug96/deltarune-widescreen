@@ -561,10 +561,10 @@ if (global.menuno == 4)
         {
             chosen = 1;
         }
-        var headssprite = 4659;
+        var headssprite = global.chapter == 1 ? spr_equipchar : spr_equipchar_ch2;
         if (global.flag[1311] == 1)
         {
-            headssprite = 4656;
+            headssprite = spr_equipchar;
         }
         var dodraw = true;
         if (i == 2 && haveflowery)
@@ -1023,10 +1023,10 @@ if (global.menuno == 2)
         {
             chosen = 1;
         }
-        var headssprite = 4659;
+        var headssprite = global.chapter == 1 ? spr_equipchar : spr_equipchar_ch2;
         if (global.flag[1311] == 1)
         {
-            headssprite = 4656;
+            headssprite = spr_equipchar;
         }
         var dodraw = true;
         if (i == 2 && haveflowery)
