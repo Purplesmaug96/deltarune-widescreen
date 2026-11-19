@@ -740,7 +740,7 @@ if (global.menuno == 4)
         {
             char_desc = stringsetloc("LV5 Walkerstar#Starwalker's#walking buddy.", "obj_darkcontroller_slash_Draw_0_gml_674_0");
         }
-        if (instance_exists(obj_room_man))
+        if (global.chapter == 5 && instance_exists(obj_room_man))
         {
             char_desc = stringsetloc("LV1", "obj_darkcontroller_slash_Draw_0_gml_677_0");
         }
