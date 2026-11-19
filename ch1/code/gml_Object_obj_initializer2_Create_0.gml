@@ -54,6 +54,7 @@ if (!instance_exists(obj_widescreen_manager))
 {
     global.widescreen_manager = instance_create(0, 0, obj_widescreen_manager);
 }
+global_flagname_init();
 global.chapter = 1;
 global.screen_border_id = "Dynamic";
 global.screen_border_active = true;
@@ -90,7 +91,7 @@ else
     scr_84_load_ini();
     scr_gamestart();
     global.damagefont = font_add_sprite_ext(spr_numbersfontbig, "0123456789", 20, 0);
-    global.hpfont = font_add_sprite_ext(spr_numbersfontsmall, scr_84_get_lang_string("obj_initializer2_slash_Create_0_gml_2_0"), 0, 2);
+    global.hpfont = font_add_sprite_ext(spr_numbersfontsmall, scr_84_get_lang_string("obj_initializer2_slash_Create_0_gml_2_0"), 0, 2); // 0123456789-+
     for (i = 0; i < 100; i += 1)
     {
         global.tempflag[i] = 0;

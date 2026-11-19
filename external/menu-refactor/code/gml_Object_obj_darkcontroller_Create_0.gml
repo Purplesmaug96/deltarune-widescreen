@@ -78,7 +78,8 @@ for (var i = 0; i < 3; i += 1)
             with (global.cinstance[i - 1])
             {
                 name = "ralsei";
-                slidesprite = spr_ralsei_slide;
+                // TODO: Fix properly
+                slidesprite = global.chapter == 1 ? spr_pxwhite : spr_ralsei_slide;
                 if (global.chapter >= 2)
                 {
                     usprite = spr_ralsei_walk_up;
@@ -254,6 +255,10 @@ errornoisebuf = -1
 controlmenuhack = 0;
 
 configmenuscrollstart = 0;
+
+if (global.chapter < 5) {
+    scr_platswap_yscale = function() { return [0, 1]; }
+}
 
 reloadconfigmenu = function() {
 
