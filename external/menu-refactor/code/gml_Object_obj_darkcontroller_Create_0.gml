@@ -270,6 +270,8 @@ configmenuregistry = []
 configmenu_input_callback = 0;
 configmenu_input_callback_idx = -1;
 
+configmenu_stacked_menu = 0;
+
 configmenuregistry[array_length(configmenuregistry)] = { name: "Master Volume", func: function(index) {
         obj_darkcontroller.configmenuregistry[index].col = c_yellow;
         obj_darkcontroller.selectnoise = 1;
@@ -488,6 +490,16 @@ configmenuregistry[array_length(configmenuregistry)] = { name: "Return to Title"
     game_restart_true();
     }, extratext: "", col: c_white, input_callback: 0, draw_callback: 0 };
 
+
+// TODO: Put this somewhere better...
+// if (variable_global_exists("widescreen_width")) {
+//     configmenuregistry[array_length(configmenuregistry)] = { name: "Widescreen Mod Settings", func: function(index) {
+//         obj_darkcontroller.configmenuregistry = [];
+//         obj_darkcontroller.configmenuscrollstart = 0;
+//         obj_darkcontroller.configmenu_stacked_menu = 1;
+//         obj_darkcontroller.selectnoise = 1;
+//         }, extratext: "", col: c_white, input_callback: 0, draw_callback: 0 };
+// }
 
 configmenuregistry[array_length(configmenuregistry)] = { name: "Exit", func: function(index) {
     obj_darkcontroller.m_quit = 1;

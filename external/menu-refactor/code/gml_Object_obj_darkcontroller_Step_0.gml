@@ -221,8 +221,9 @@ if (global.interact == 5)
                 }
                 if (button2_p() && twobuffer < 0)
                 {
-                    m_quit = 1
-                    cancelnoise = 1
+                    if (configmenu_stacked_menu == 0) m_quit = 1;
+                    else reloadconfigmenu();
+                    cancelnoise = 1;
                 }
             }
             else {
