@@ -62,7 +62,7 @@ if (!ini_key_exists("GAMEPLAY", "alt_attack_mode")) {
 
 global.debug = ini_read_real("DEBUG", "debug", 0);
 if (!ini_key_exists("DEBUG", "debug")) {
-    ini_write_real("DEBUG1", "debug", 0);
+    ini_write_real("DEBUG", "debug", 0);
 }
 
 ossafe_ini_close();
@@ -73,3 +73,23 @@ global.widescreen_mod_ver = "0.1.0-dev"
 global._debugplus_chemg_x = 0;
 global._debugplus_chemg_y = 0;
 global._debugplus_counter = 0;
+
+// For LW, the original values are hijacked since LW is 320x240
+global._widescreen_width = global.widescreen_width;
+global._widescreen_diff = global.widescreen_diff;
+global._widescreen_half_diff = global.widescreen_half_diff;
+global._widescreen_quarter_diff = global.widescreen_quarter_diff;
+
+switch_to_lw = function() {
+    global.widescreen_width = global._widescreen_width / 2;
+    global.widescreen_diff = global._widescreen_diff / 2;
+    global.widescreen_half_diff = global._widescreen_half_diff / 2;
+    global.widescreen_quarter_diff = global._widescreen_quarter_diff / 2;
+}
+
+switch_to_dw = function() {
+    global.widescreen_width = global._widescreen_width;
+    global.widescreen_diff = global._widescreen_diff;
+    global.widescreen_half_diff = global._widescreen_half_diff;
+    global.widescreen_quarter_diff = global._widescreen_quarter_diff;
+}
