@@ -708,154 +708,263 @@ if (global.menuno == 4)
                 draw_set_color(-1);
             }
         }
-        char_desc = stringsetloc("LV5 Blue Rose#Quiet, yet#flirtatious.", "obj_darkcontroller_slash_Draw_0_gml_638_0");
-        if (global.plot >= 440)
-        {
-            char_desc = stringsetloc("LV5 Dark Rose#Conveys#departure.", "obj_darkcontroller_slash_Draw_0_gml_641_0");
-        }
-        if (scr_flag_get(1846) >= 2)
-        {
-            char_desc = stringsetloc("LV5 Pink Rose#Flirtatious, and#flirtatious.", "obj_darkcontroller_slash_Draw_0_gml_646_0");
-        }
-        if (scr_flag_get(1743) == 1)
-        {
-            char_desc = stringsetloc("LV5 Shattered Rose#Only one knows#the rose's meaning.", "obj_darkcontroller_slash_Draw_0_gml_651_0");
-        }
-        var moss_flags = [106, 922, 1078, 1592];
-        var moss_title_active = true;
-        for (var i = 0; i < array_length(moss_flags); i++)
-        {
-            if (scr_flag_get(moss_flags[i]) == 1)
-            {
-                continue;
-            }
-            moss_title_active = false;
-            break;
-        }
-        if (global.plot >= 398 && moss_title_active)
-        {
-            char_desc = stringsetloc("LV5 Last Moss#A mossliker's#final form.", "obj_darkcontroller_slash_Draw_0_gml_669_0");
-        }
-        if (scr_flag_get_ext(1851, 0) == 1)
-        {
-            char_desc = stringsetloc("LV5 Walkerstar#Starwalker's#walking buddy.", "obj_darkcontroller_slash_Draw_0_gml_674_0");
-        }
-        if (global.chapter == 5 && instance_exists(obj_room_man))
-        {
-            char_desc = stringsetloc("LV1", "obj_darkcontroller_slash_Draw_0_gml_677_0");
-        }
     }
-    if (charcoord == 2)
-    {
-        guts_amount = 2;
-        rude_amount = 100;
-        if (global.chapter == 1)
-        {
-            if (global.plot >= 154)
+    
+    switch (global.chapter) {
+        case 1:
+            if (charcoord == 1)
             {
-                rude_amount = 99;
-            }
-        }
-        if (global.chapter == 2)
-        {
-            rude_amount -= 11;
-        }
-        if (global.chapter == 3)
-        {
-            guts_amount = 3;
-        }
-        if (global.chapter == 5)
-        {
-            guts_amount = 4;
-        }
-        draw_text(xx + 100, ch_y[3], string_hash_to_newline(stringsetloc("Rudeness ", "obj_darkcontroller_slash_Draw_0_gml_251_0")));
-        draw_item_icon(xx + 74, ch_y[3] + 6, 13);
-        draw_text(xx + 230, ch_y[3], string_hash_to_newline(rude_amount));
-        char_desc = stringsetloc("LV5 Violent Violet#For that special#someone.", "obj_darkcontroller_slash_Draw_0_gml_710_0");
-        if (global.plot >= 440)
-        {
-            char_desc = stringsetloc("LV5 Dark Vine#Assists in sealing#the Fountain.", "obj_darkcontroller_slash_Draw_0_gml_714_0");
-        }
-        if (global.chapter >= 4)
-        {
-            var showstat = false;
-            var healcount = (global.mag[1] * 5) + 15 + (2 * global.flag[1045]);
-            if (global.flag[852] == 1)
-            {
-                healcount = (global.mag[1] * 10) + (2 * global.flag[1045]);
-            }
-            var healing = stringsetloc("Healing", "obj_darkcontroller_slash_Draw_0_gml_615_0_b");
-            var readstring = healing;
-            var numstring = string(healcount);
-            if (healcount)
-            {
-                showstat = true;
-            }
-            if (!showstat)
-            {
+                guts_amount = 1;
                 draw_set_color(c_dkgray);
-                draw_text(xx + 100, ch_y[4], "???");
-                draw_set_color(-1);
+                draw_text(xx + 100, ch_y[4], string_hash_to_newline(scr_84_get_lang_string("obj_darkcontroller_slash_Draw_0_gml_226_0"))); // ???
+                if (dograndom >= 99)
+                {
+                    draw_set_color(c_white);
+                    draw_text(xx + 100, ch_y[3], string_hash_to_newline(scr_84_get_lang_string("obj_darkcontroller_slash_Draw_0_gml_231_0"))); // Dog:
+                    draw_sprite_ext(spr_dog_sleep, -threebuffer / 30, xx + 220, ch_y[3] + 5, 2, 2, 0, c_white, 1);
+                }
+                else
+                {
+                    draw_text(xx + 100, ch_y[3], string_hash_to_newline(scr_84_get_lang_string("obj_darkcontroller_slash_Draw_0_gml_236_0"))); // ???
+                }
+                draw_set_color(c_white);
+                char_desc = scr_84_get_lang_string("obj_darkcontroller_slash_Draw_0_gml_239_0"); // LV1 Human#Body contains a#human SOUL.
+                if (global.plot >= 30)
+                {
+                    char_desc = scr_84_get_lang_string("obj_darkcontroller_slash_Draw_0_gml_240_0"); // LV1 Leader#Commands the party#with various ACTs.
+                }
+                if (global.flag[252] == 1)
+                {
+                    char_desc = scr_84_get_lang_string("obj_darkcontroller_slash_Draw_0_gml_241_0"); // LV1 Bed Inspector#Inspects all beds#inexplicably.
+                }
             }
-            else
+            else if (charcoord == 2)
             {
-                draw_set_color(-1);
-                draw_text(xx + 100, ch_y[4], readstring);
-                draw_text(xx + 74, ch_y[4], "*");
-                draw_text(xx + 100 + 130, ch_y[4], numstring);
+                guts_amount = 2;
+                rude_amount = 100;
+                if (global.plot >= 154)
+                {
+                    rude_amount = 99;
+                }
+                crude_amount = 100;
+                if (global.flag[214] == 1)
+                {
+                    crude_amount = 101;
+                }
+                draw_text(xx + 100, ch_y[3], string_hash_to_newline(scr_84_get_lang_string("obj_darkcontroller_slash_Draw_0_gml_251_0"))); // Rudeness 
+                draw_item_icon(xx + 74, ch_y[3] + 6, 13);
+                if (global.lang == "ja")
+                {
+                    draw_text_transformed(xx + 100, ch_y[4], string_hash_to_newline(scr_84_get_lang_string("obj_darkcontroller_slash_Draw_0_gml_252_0")), 1, 1, 0); // Crudeness 
+                    draw_item_icon(xx + 74, ch_y[4] + 6, 13);
+                }
+                else
+                {
+                    draw_text_transformed(xx + 100, ch_y[4], string_hash_to_newline(scr_84_get_lang_string("obj_darkcontroller_slash_Draw_0_gml_252_0")), 0.8, 1, 0); // Crudeness 
+                    draw_item_icon(xx + 74, ch_y[4] + 6, 13);
+                }
+                draw_text(xx + 230, ch_y[3], string_hash_to_newline(rude_amount));
+                draw_text(xx + 230, ch_y[4], string_hash_to_newline(crude_amount));
+                char_desc = scr_84_get_lang_string("obj_darkcontroller_slash_Draw_0_gml_255_0"); // LV1 Mean Girl#Won't do anything#but fight.
+                if (global.plot >= 154)
+                {
+                    char_desc = scr_84_get_lang_string("obj_darkcontroller_slash_Draw_0_gml_256_0"); // LV1 Dark Knight#Does damage using#dark energy.
+                }
             }
-        }
-    }
-    if (charcoord == 3)
-    {
-        guts_amount = 0;
-        fluff_amount = 1;
-        kindness_amount = 100;
-        kind_icon = 10;
-        kind_text = stringsetloc("Kindness", "obj_darkcontroller_slash_Draw_0_gml_327_0");
-        if (dograndom >= 97)
-        {
-            kind_icon = 11;
-            kind_text = stringsetloc("Dogness", "obj_darkcontroller_slash_Draw_0_gml_331_0");
-            kindness_amount = 1;
-        }
-        char_desc = stringsetloc("LV5 Artemisia#Goes well with tea.", "obj_darkcontroller_slash_Draw_0_gml_759_0");
-        if (global.plot >= 440)
-        {
-            char_desc = stringsetloc("LV5 Dark Vine#Watering their#own thorns.", "obj_darkcontroller_slash_Draw_0_gml_763_0");
-        }
-        if (global.chapter == 5)
-        {
-            if (haveflowery)
+            else if (charcoord == 3)
             {
-                char_desc = stringsetloc("LV99 Roommate#Your dad's his#best friend.", "obj_darkcontroller_slash_Draw_0_gml_770_0");
+                guts_amount = 0;
+                fluff_amount = 1;
+                kindness_amount = 100;
+                kind_icon = 10;
+                kind_text = scr_84_get_lang_string("obj_darkcontroller_slash_Draw_0_gml_265_0"); // Kindness
+                if (dograndom >= 99)
+                {
+                    kind_icon = 11;
+                    kind_text = scr_84_get_lang_string("obj_darkcontroller_slash_Draw_0_gml_269_0"); // Dogness
+                    kindness_amount = 1;
+                }
+                char_desc = scr_84_get_lang_string("obj_darkcontroller_slash_Draw_0_gml_272_0"); // LV1 Lonely Prince#Dark-World being.#Has no subjects.
+                if (global.charweapon[3] == 9)
+                {
+                    char_desc = scr_84_get_lang_string("obj_darkcontroller_slash_Draw_0_gml_275_0"); // LV1 Prickly Prince#Deals damage with#his rugged scarf.
+                }
+                if (global.charweapon[3] == 10)
+                {
+                    char_desc = scr_84_get_lang_string("obj_darkcontroller_slash_Draw_0_gml_279_0"); // LV1 Fluffy Prince#Weak, but has nice#healing powers.
+                    fluff_amount += 1;
+                }
+                draw_text(xx + 100, ch_y[3], string_hash_to_newline(kind_text));
+                draw_item_icon(xx + 74, ch_y[3] + 6, kind_icon);
+                draw_text(xx + 230, ch_y[3], string_hash_to_newline(kindness_amount));
+                fluff_xscale = 0.8;
+                if (global.lang == "ja")
+                {
+                    fluff_xscale = 1;
+                }
+                draw_text_transformed(xx + 100, ch_y[4], string_hash_to_newline(scr_84_get_lang_string("obj_darkcontroller_slash_Draw_0_gml_286_0")), fluff_xscale, 1, 0); // Fluffiness
+                draw_item_icon(xx + 74, ch_y[4] + 6, 12);
+                for (var i = 0; i < fluff_amount; i += 1)
+                {
+                    draw_item_icon(xx + 230 + (i * 20), ch_y[4] + 6, 12);
+                }
             }
-        }
-        var __scale = 0.8;
-        if (global.lang == "ja")
-        {
-            __scale = 1;
-        }
-        draw_text_transformed(xx + 100, ch_y[4], string_hash_to_newline(stringsetloc("Fluffiness", "obj_darkcontroller_slash_Draw_0_gml_286_0")), __scale, 1, 0);
-        draw_item_icon(xx + 74, ch_y[4] + 6, 12);
-        for (var i = 0; i < fluff_amount; i += 1)
-        {
-            draw_item_icon(xx + 230 + (i * 20), ch_y[4] + 6, 12);
-        }
+            break;
+        case 5:
+            if (charcoord == 1)
+            {
+                char_desc = stringsetloc("LV5 Blue Rose#Quiet, yet#flirtatious.", "obj_darkcontroller_slash_Draw_0_gml_638_0");
+                if (global.plot >= 440)
+                {
+                    char_desc = stringsetloc("LV5 Dark Rose#Conveys#departure.", "obj_darkcontroller_slash_Draw_0_gml_641_0");
+                }
+                if (scr_flag_get(1846) >= 2)
+                {
+                    char_desc = stringsetloc("LV5 Pink Rose#Flirtatious, and#flirtatious.", "obj_darkcontroller_slash_Draw_0_gml_646_0");
+                }
+                if (scr_flag_get(1743) == 1)
+                {
+                    char_desc = stringsetloc("LV5 Shattered Rose#Only one knows#the rose's meaning.", "obj_darkcontroller_slash_Draw_0_gml_651_0");
+                }
+                var moss_flags = [106, 922, 1078, 1592];
+                var moss_title_active = true;
+                for (var i = 0; i < array_length(moss_flags); i++)
+                {
+                    if (scr_flag_get(moss_flags[i]) == 1)
+                    {
+                        continue;
+                    }
+                    moss_title_active = false;
+                    break;
+                }
+                if (global.plot >= 398 && moss_title_active)
+                {
+                    char_desc = stringsetloc("LV5 Last Moss#A mossliker's#final form.", "obj_darkcontroller_slash_Draw_0_gml_669_0");
+                }
+                if (scr_flag_get_ext(1851, 0) == 1)
+                {
+                    char_desc = stringsetloc("LV5 Walkerstar#Starwalker's#walking buddy.", "obj_darkcontroller_slash_Draw_0_gml_674_0");
+                }
+                if (global.chapter == 5 && instance_exists(obj_room_man))
+                {
+                    char_desc = stringsetloc("LV1", "obj_darkcontroller_slash_Draw_0_gml_677_0");
+                }
+            }
+            else if (charcoord == 2)
+            {
+                guts_amount = 2;
+                rude_amount = 100;
+                if (global.chapter == 1)
+                {
+                    if (global.plot >= 154)
+                    {
+                        rude_amount = 99;
+                    }
+                }
+                if (global.chapter == 2)
+                {
+                    rude_amount -= 11;
+                }
+                if (global.chapter == 3)
+                {
+                    guts_amount = 3;
+                }
+                if (global.chapter == 5)
+                {
+                    guts_amount = 4;
+                }
+                draw_text(xx + 100, ch_y[3], string_hash_to_newline(stringsetloc("Rudeness ", "obj_darkcontroller_slash_Draw_0_gml_251_0")));
+                draw_item_icon(xx + 74, ch_y[3] + 6, 13);
+                draw_text(xx + 230, ch_y[3], string_hash_to_newline(rude_amount));
+                char_desc = stringsetloc("LV5 Violent Violet#For that special#someone.", "obj_darkcontroller_slash_Draw_0_gml_710_0");
+                if (global.plot >= 440)
+                {
+                    char_desc = stringsetloc("LV5 Dark Vine#Assists in sealing#the Fountain.", "obj_darkcontroller_slash_Draw_0_gml_714_0");
+                }
+                if (global.chapter >= 4)
+                {
+                    var showstat = false;
+                    var healcount = (global.mag[1] * 5) + 15 + (2 * global.flag[1045]);
+                    if (global.flag[852] == 1)
+                    {
+                        healcount = (global.mag[1] * 10) + (2 * global.flag[1045]);
+                    }
+                    var healing = stringsetloc("Healing", "obj_darkcontroller_slash_Draw_0_gml_615_0_b");
+                    var readstring = healing;
+                    var numstring = string(healcount);
+                    if (healcount)
+                    {
+                        showstat = true;
+                    }
+                    if (!showstat)
+                    {
+                        draw_set_color(c_dkgray);
+                        draw_text(xx + 100, ch_y[4], "???");
+                        draw_set_color(-1);
+                    }
+                    else
+                    {
+                        draw_set_color(-1);
+                        draw_text(xx + 100, ch_y[4], readstring);
+                        draw_text(xx + 74, ch_y[4], "*");
+                        draw_text(xx + 100 + 130, ch_y[4], numstring);
+                    }
+                }
+            }
+            else if (charcoord == 3)
+            {
+                guts_amount = 0;
+                fluff_amount = 1;
+                kindness_amount = 100;
+                kind_icon = 10;
+                kind_text = stringsetloc("Kindness", "obj_darkcontroller_slash_Draw_0_gml_327_0");
+                if (dograndom >= 97)
+                {
+                    kind_icon = 11;
+                    kind_text = stringsetloc("Dogness", "obj_darkcontroller_slash_Draw_0_gml_331_0");
+                    kindness_amount = 1;
+                }
+                char_desc = stringsetloc("LV5 Artemisia#Goes well with tea.", "obj_darkcontroller_slash_Draw_0_gml_759_0");
+                if (global.plot >= 440)
+                {
+                    char_desc = stringsetloc("LV5 Dark Vine#Watering their#own thorns.", "obj_darkcontroller_slash_Draw_0_gml_763_0");
+                }
+                if (global.chapter == 5)
+                {
+                    if (haveflowery)
+                    {
+                        char_desc = stringsetloc("LV99 Roommate#Your dad's his#best friend.", "obj_darkcontroller_slash_Draw_0_gml_770_0");
+                    }
+                }
+                var __scale = 0.8;
+                if (global.lang == "ja")
+                {
+                    __scale = 1;
+                }
+                draw_text_transformed(xx + 100, ch_y[4], string_hash_to_newline(stringsetloc("Fluffiness", "obj_darkcontroller_slash_Draw_0_gml_286_0")), __scale, 1, 0);
+                draw_item_icon(xx + 74, ch_y[4] + 6, 12);
+                for (var i = 0; i < fluff_amount; i += 1)
+                {
+                    draw_item_icon(xx + 230 + (i * 20), ch_y[4] + 6, 12);
+                }
+            }
+            else if (charcoord == 4)
+            {
+                guts_amount = 0;
+                char_desc = stringsetloc("LV5 Mistletoe#Things got#serious today.", "obj_darkcontroller_slash_Draw_0_gml_790_0");
+                var coldness_amount = clamp(47 + (global.flag[925] * 7), 47, 100);
+                draw_text(xx + 100, ch_y[3], string_hash_to_newline(stringsetloc("Coldness ", "obj_darkcontroller_slash_Draw_0_gml_388_0")));
+                draw_item_icon(xx + 74, ch_y[3] + 6, 17);
+                draw_text(xx + 230, ch_y[3], string_hash_to_newline(coldness_amount));
+                draw_text_transformed(xx + 100, ch_y[4], string_hash_to_newline(stringsetloc("Boldness", "obj_darkcontroller_slash_Draw_0_gml_391_0")), langopt(0.8, 1), 1, 0);
+                draw_item_icon(xx + 74, ch_y[4] + 6, 16);
+                var boldness_amount = min(-12 + ((global.plot - 70) * 3), 100);
+                draw_text(xx + 230, ch_y[4], string_hash_to_newline(boldness_amount));
+            }
+        default:
+            char_desc = "Oopses this chapter#isnt supported in#gml_Object_obj_darkcontroller_Draw_0#:((";
     }
-    if (charcoord == 4)
-    {
-        guts_amount = 0;
-        char_desc = stringsetloc("LV5 Mistletoe#Things got#serious today.", "obj_darkcontroller_slash_Draw_0_gml_790_0");
-        var coldness_amount = clamp(47 + (global.flag[925] * 7), 47, 100);
-        draw_text(xx + 100, ch_y[3], string_hash_to_newline(stringsetloc("Coldness ", "obj_darkcontroller_slash_Draw_0_gml_388_0")));
-        draw_item_icon(xx + 74, ch_y[3] + 6, 17);
-        draw_text(xx + 230, ch_y[3], string_hash_to_newline(coldness_amount));
-        draw_text_transformed(xx + 100, ch_y[4], string_hash_to_newline(stringsetloc("Boldness", "obj_darkcontroller_slash_Draw_0_gml_391_0")), langopt(0.8, 1), 1, 0);
-        draw_item_icon(xx + 74, ch_y[4] + 6, 16);
-        var boldness_amount = min(-12 + ((global.plot - 70) * 3), 100);
-        draw_text(xx + 230, ch_y[4], string_hash_to_newline(boldness_amount));
-    }
+
     draw_text(xx + 320, yy + 105, string_hash_to_newline(char_desc));
     var guts_xoff = langopt(0, 16);
     for (var i = 0; i < guts_amount; i += 1)
