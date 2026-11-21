@@ -1,0 +1,56 @@
+if (!cutscene && !instance_exists(obj_shake) && (global.darkzone ? true : global.plot >= 245)) {
+    var view_w = __view_get(e__VW.WView, 0);
+    var view_h = __view_get(e__VW.HView, 0);
+    var wd = x - view_w / 2;
+    var ht = y - view_h / 2;
+    
+    if (global.darkzone) {
+        wd -= initwd / 2;
+        ht -= initht / 2;
+    }
+    
+    wd = floor(wd);
+    ht = floor(ht);
+    
+    if (!global.darkzone) {
+        // What does this do
+        __view_set(e__VW.Object, 0, -4);
+        wd += 11;
+        ht += 17;
+    }
+    
+    var sx = view_w > room_width ? -(view_w - room_width) / 2 : clamp(wd, 0, room_width - view_w);
+    var sy = view_h > room_height ? -(view_h - room_height) / 2 : clamp(ht, 0, room_height - view_h);
+    
+    __view_set(e__VW.XView, 0, sx);
+    __view_set(e__VW.YView, 0, sy);
+}
+
+if (bg == 1)
+{
+    with (obj_backgrounderparent)
+    {
+        event_user(0);
+    }
+}
+
+enum e__VW
+{
+    XView,
+    YView,
+    WView,
+    HView,
+    Angle,
+    HBorder,
+    VBorder,
+    HSpeed,
+    VSpeed,
+    Object,
+    Visible,
+    XPort,
+    YPort,
+    WPort,
+    HPort,
+    Camera,
+    SurfaceID
+}
