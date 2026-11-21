@@ -10,16 +10,22 @@ function scr_prefetch_textures()
         texture_groups[array_length(texture_groups)] = "Console";
     }
 
-    // It's just Tenna??
-    var texture_groups_nonblock = ["NoAutoCrop"];
+    // TODO: Figure out if this is actually unused or not...
+    var texture_groups_nonblock = [];
+    
+    if (global.chapter == 5) {
+        array_push(texture_groups_nonblock, "unusedAssets");
+    }
 
-    if (global.floortex_load_mode == 1)
+    if (global.chapter >= 3) {
+        // It's just Tenna??
+        array_push(texture_groups_nonblock, "NoAutoCrop");
+    }
+
+    if (global.chapter == 5 && global.floortex_load_mode == 1)
     {
         array_push(texture_groups_nonblock, "ftex_castle_left", "ftex_castle_right", "ftex_castle_top", "ftex_cliffs", "ftex_garden");
     }
-
-    // TODO: Figure out if this is actually unused or not...
-    array_push(texture_groups_nonblock, "unusedAssets");
 
     for (var i = 0; i < array_length(texture_groups); i++)
     {
