@@ -97,7 +97,7 @@ function scr_load()
 		ds_list_destroy(weaponstyle_list)
 		ossafe_file_text_readln(myfileid)
 	}
-	for (i = 0; i < 5; i += 1)
+	for (i = 0; i < (global.chapter == 1 ? 4 : 5); i += 1)
 	{
 		if (!global.is_console)
 		{
@@ -119,8 +119,16 @@ function scr_load()
 			ossafe_file_text_readln(myfileid)
 			global.chararmor2[i] = ossafe_file_text_read_real(myfileid)
 			ossafe_file_text_readln(myfileid)
-			global.weaponstyle[i] = ossafe_file_text_read_real(myfileid)
-			ossafe_file_text_readln(myfileid)
+			if (global.chapter == 1)
+			{
+				global.weaponstyle[i] = ossafe_file_text_read_string(myfileid)
+				ossafe_file_text_readln(myfileid)
+			}
+			else
+			{
+				global.weaponstyle[i] = ossafe_file_text_read_real(myfileid)
+				ossafe_file_text_readln(myfileid)
+			}
 		}
 		for (q = 0; q < 4; q += 1)
 		{
@@ -140,10 +148,13 @@ function scr_load()
 			ossafe_file_text_readln(myfileid)
 			global.itemspecial[i][q] = ossafe_file_text_read_real(myfileid)
 			ossafe_file_text_readln(myfileid)
-			global.itemelement[i][q] = ossafe_file_text_read_real(myfileid)
-			ossafe_file_text_readln(myfileid)
-			global.itemelementamount[i][q] = ossafe_file_text_read_real(myfileid)
-			ossafe_file_text_readln(myfileid)
+			if (global.chapter != 1)
+			{
+				global.itemelement[i][q] = ossafe_file_text_read_real(myfileid)
+				ossafe_file_text_readln(myfileid)
+				global.itemelementamount[i][q] = ossafe_file_text_read_real(myfileid)
+				ossafe_file_text_readln(myfileid)
+			}
 		}
 		for (j = 0; j < 12; j += 1)
 		{
@@ -187,24 +198,41 @@ function scr_load()
 	}
 	else
 	{
-		for (j = 0; j < 13; j += 1)
+		if (global.chapter == 1)
 		{
-			global.item[j] = ossafe_file_text_read_real(myfileid)
-			ossafe_file_text_readln(myfileid)
-			global.keyitem[j] = ossafe_file_text_read_real(myfileid)
-			ossafe_file_text_readln(myfileid)
+			for (j = 0; j < 13; j += 1)
+			{
+				global.item[j] = ossafe_file_text_read_real(myfileid)
+				ossafe_file_text_readln(myfileid)
+				global.keyitem[j] = ossafe_file_text_read_real(myfileid)
+				ossafe_file_text_readln(myfileid)
+				global.weapon[j] = ossafe_file_text_read_real(myfileid)
+				ossafe_file_text_readln(myfileid)
+				global.armor[j] = ossafe_file_text_read_real(myfileid)
+				ossafe_file_text_readln(myfileid)
+			}
 		}
-		for (j = 0; j < 48; j += 1)
+		else
 		{
-			global.weapon[j] = ossafe_file_text_read_real(myfileid)
-			ossafe_file_text_readln(myfileid)
-			global.armor[j] = ossafe_file_text_read_real(myfileid)
-			ossafe_file_text_readln(myfileid)
-		}
-		for (j = 0; j < 72; j += 1)
-		{
-			global.pocketitem[j] = ossafe_file_text_read_real(myfileid)
-			ossafe_file_text_readln(myfileid)
+			for (j = 0; j < 13; j += 1)
+			{
+				global.item[j] = ossafe_file_text_read_real(myfileid)
+				ossafe_file_text_readln(myfileid)
+				global.keyitem[j] = ossafe_file_text_read_real(myfileid)
+				ossafe_file_text_readln(myfileid)
+			}
+			for (j = 0; j < 48; j += 1)
+			{
+				global.weapon[j] = ossafe_file_text_read_real(myfileid)
+				ossafe_file_text_readln(myfileid)
+				global.armor[j] = ossafe_file_text_read_real(myfileid)
+				ossafe_file_text_readln(myfileid)
+			}
+			for (j = 0; j < 72; j += 1)
+			{
+				global.pocketitem[j] = ossafe_file_text_read_real(myfileid)
+				ossafe_file_text_readln(myfileid)
+			}
 		}
 	}
 	global.tension = ossafe_file_text_read_real(myfileid)
@@ -260,7 +288,7 @@ function scr_load()
 			global.phone[i] = ossafe_file_text_read_real(myfileid)
 			ossafe_file_text_readln(myfileid)
 		}
-		for (i = 0; i < 2500; i += 1)
+		for (i = 0; i < (global.chapter == 1 ? 9999 : 2500); i += 1)
 		{
 			global.flag[i] = ossafe_file_text_read_real(myfileid)
 			ossafe_file_text_readln(myfileid)
@@ -278,33 +306,93 @@ function scr_load()
 	audio_group_set_gain(1, global.flag[15], 0)
 	audio_set_master_gain(0, global.flag[17])
 	var room_id = global.currentroom
-	if (room_id < 10000)
+	if (global.chapter == 1)
 	{
-		room_id = scr_get_id_by_room_index(global.currentroom)
-		if (room_id == room_gms_debug_failsafe)
+		if (global.plot >= 156)
+		{
+			for (i = 0; i < 4; i += 1)
+				global.charauto[i] = 0
+		}
+		if (room_id < 10000)
+		{
+			if (global.flag[279] == 0)
+			{
+				global.flag[279] = 1
+				var room_index = room_id
+				var room_offset = room_index
+				if (room_index < 281)
+					room_offset = 281 + room_index
+				room_id = room_offset
+			}
 			room_id += (global.chapter * 10000)
-		global.currentroom = room_id
-	}
-	__loadedroom = scr_get_room_by_id(global.currentroom)
-	if (scr_dogcheck())
-		__loadedroom = PLACE_DOGCHECK_CH5
-	scr_tempsave()
-	if (global.is_console)
-		global.tempflag[95] = 1
-	if (scr_debug())
-	{
-		if (room_exists(__loadedroom))
-		{
-			room_goto(__loadedroom)
+			global.currentroom = room_id
+			if (global.filechoice != 9)
+			{
+				var valid_room_index = scr_get_valid_room(global.chapter, global.currentroom)
+				global.currentroom = scr_get_id_by_room_index(valid_room_index)
+				if (global.currentroom == scr_get_id_by_room_index(45) && global.plot >= 33)
+					global.currentroom = scr_get_id_by_room_index(49)
+				if (global.currentroom == scr_get_id_by_room_index(96) && global.plot >= 130)
+					global.currentroom = scr_get_id_by_room_index(97)
+			}
 		}
-		else
-		{
-			snd_play(snd_error)
-			scr_debug_print("LOAD FAILED: ROOM [" + string(__loadedroom) + "] DOESN'T EXIST")
-		}
+		global.invc = 1
+		__loadedroom = scr_get_room_by_id(global.currentroom)
+		with (obj_gamecontroller)
+			enable_loading()
+		if (scr_dogcheck())
+			__loadedroom = PLACE_DOG
+		room_goto(__loadedroom)
+		scr_tempsave()
+		global.currentroom = __loadedroom
 	}
 	else
 	{
-		room_goto(__loadedroom)
+		if (room_id < 10000)
+		{
+			room_id = scr_get_id_by_room_index(global.currentroom)
+			if (room_id == room_gms_debug_failsafe)
+				room_id += (global.chapter * 10000)
+			global.currentroom = room_id
+		}
+		__loadedroom = scr_get_room_by_id(global.currentroom)
+		if (scr_dogcheck())
+			switch (global.chapter)
+			{
+				case 1:
+					__loadedroom = PLACE_DOG
+					break
+				case 2:
+					__loadedroom = PLACE_DOGCHECK_CH2
+					break
+				case 3:
+					__loadedroom = PLACE_DOGCHECK_CH3
+					break
+				case 4:
+					__loadedroom = PLACE_DOGCHECK_CH4
+					break
+				case 5:
+					__loadedroom = PLACE_DOGCHECK_CH5
+					break
+			}
+		scr_tempsave()
+		if (global.is_console)
+			global.tempflag[95] = 1
+		if (scr_debug())
+		{
+			if (room_exists(__loadedroom))
+			{
+				room_goto(__loadedroom)
+			}
+			else
+			{
+				snd_play(snd_error)
+				scr_debug_print("LOAD FAILED: ROOM [" + string(__loadedroom) + "] DOESN'T EXIST")
+			}
+		}
+		else
+		{
+			room_goto(__loadedroom)
+		}
 	}
 }
