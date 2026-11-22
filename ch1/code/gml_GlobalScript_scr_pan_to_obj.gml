@@ -22,7 +22,8 @@ function scr_pan_to_obj(arg0, arg1)
     {
         _vy = room_height - ch;
     }
-    scr_pan((_vx - __view_get(e__VW.XView, 0)) / arg1, (_vy - __view_get(e__VW.YView, 0)) / arg1, arg1);
+    // TODO: Should this be camera*() or raw_camera*()? keeping it as raw so it wont break for now
+    scr_pan((_vx - raw_camerax()) / arg1, (_vy - raw_cameray()) / arg1, arg1);
 }
 
 enum e__VW
