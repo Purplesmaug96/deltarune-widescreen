@@ -40,3 +40,11 @@ if (scr_debug()) {
     draw_set_colour(c_lime);
     draw_rectangle(_gui_mx, _gui_my, _gui_mx + 10, _gui_my + 10, false);
 }
+
+if (global.load_screen && instance_exists(obj_initializer2) && !obj_initializer2.__scr_prefetch_textures_check_status()) {
+    var _cam = view_camera[0];
+    var _cam_w = camera_get_view_width(_cam);
+    var _cam_h = camera_get_view_height(_cam);
+    debug_message("Ha!")
+    draw_sprite_ext(global.load_screen_spr, 0, 0, 0, 1, 1, 0, c_white, 1);
+}
