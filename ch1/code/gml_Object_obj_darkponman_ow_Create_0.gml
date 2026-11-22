@@ -80,4 +80,4 @@ siner = 0;
 xx = raw_camerax();
 yy = raw_cameray();
 ww = camerawidth();
-yy = camerawidth();
+hh = cameraheight();

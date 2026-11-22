@@ -39,4 +39,4 @@ if (room == room_forest_chase1 || room == room_forest_chase2 || room == room_dar
 xx = raw_camerax();
 yy = raw_cameray();
 ww = camerawidth();
-yy = camerawidth();
+hh = cameraheight();

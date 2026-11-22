@@ -105,4 +105,4 @@ if (room == room_forest_dancers1 || room == room_cc_4f)
 xx = raw_camerax();
 yy = raw_cameray();
 ww = camerawidth();
-yy = camerawidth();
+hh = cameraheight();
