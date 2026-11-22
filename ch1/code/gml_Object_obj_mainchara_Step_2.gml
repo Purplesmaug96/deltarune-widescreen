@@ -1,6 +1,6 @@
 if (!cutscene && !instance_exists(obj_shake) && (global.darkzone ? true : global.plot >= 245)) {
-    var view_w = __view_get(e__VW.WView, 0);
-    var view_h = __view_get(e__VW.HView, 0);
+    var view_w = camerawidth();
+    var view_h = cameraheight();
     var wd = x - view_w / 2;
     var ht = y - view_h / 2;
     
