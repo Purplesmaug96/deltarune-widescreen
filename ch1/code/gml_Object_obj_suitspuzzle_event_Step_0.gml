@@ -248,13 +248,13 @@ if (con == 16)
 {
     with (s)
     {
-        x = __view_get(e__VW.XView, 0) + camerawidth();
+        x = raw_camerax() + camerawidth();
         sprite_index = spr_susiel_dark;
         hspeed = -12;
     }
     hspeed = -12;
     sprite_index = spr_lancer_lt;
-    x = __view_get(e__VW.XView, 0) + camerawidth() + 50;
+    x = raw_camerax() + camerawidth() + 50;
     con = 17;
 }
 if (con == 17)
@@ -311,25 +311,4 @@ if (con == 22)
     global.interact = 0;
     global.plot = 72;
     con = 23;
-}
-
-enum e__VW
-{
-    XView,
-    YView,
-    WView,
-    HView,
-    Angle,
-    HBorder,
-    VBorder,
-    HSpeed,
-    VSpeed,
-    Object,
-    Visible,
-    XPort,
-    YPort,
-    WPort,
-    HPort,
-    Camera,
-    SurfaceID
 }

@@ -93,33 +93,12 @@ menucoord2[0] = 0;
 menucoord2[1] = 0;
 menucoord2[2] = 0;
 endcoord = 0;
-xx = __view_get(e__VW.XView, 0);
-yy = __view_get(e__VW.YView, 0);
+xx = camerax();
+yy = cameray();
 ww = camerawidth();
 hh = cameraheight();
-thrash = instance_create(xx + (ww / 2.5), yy + (hh / 3), obj_thrashmachine);
+thrash = instance_create(/* TODO: Swap this back to xx and switch xx/yy to raw_* maybe? */raw_camerax() + (ww / 2.5), yy + (hh / 3), obj_thrashmachine);
 with (thrash)
 {
     a = 0;
-}
-
-enum e__VW
-{
-    XView,
-    YView,
-    WView,
-    HView,
-    Angle,
-    HBorder,
-    VBorder,
-    HSpeed,
-    VSpeed,
-    Object,
-    Visible,
-    XPort,
-    YPort,
-    WPort,
-    HPort,
-    Camera,
-    SurfaceID
 }
