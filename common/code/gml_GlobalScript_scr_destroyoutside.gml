@@ -1,44 +1,7 @@
 function scr_destroyoutside()
 {
-    if (global.mnfight != 2)
+    if (global.mnfight != 2 || scr_outside_camera())
     {
         instance_destroy();
     }
-    if (x < (__view_get(e__VW.XView, 0) - sprite_width))
-    {
-        instance_destroy();
-    }
-    if (x > (__view_get(e__VW.XView, 0) + 640 + sprite_width))
-    {
-        instance_destroy();
-    }
-    if (y < (__view_get(e__VW.YView, 0) - sprite_height))
-    {
-        instance_destroy();
-    }
-    if (y > (__view_get(e__VW.YView, 0) + 480 + sprite_height))
-    {
-        instance_destroy();
-    }
-}
-
-enum e__VW
-{
-    XView,
-    YView,
-    WView,
-    HView,
-    Angle,
-    HBorder,
-    VBorder,
-    HSpeed,
-    VSpeed,
-    Object,
-    Visible,
-    XPort,
-    YPort,
-    WPort,
-    HPort,
-    Camera,
-    SurfaceID
 }
