@@ -1,4 +1,4 @@
-function scr_outside_camera(arg0)
+function scr_outside_camera(arg0 = 0)
 {
     var _offcamera = 0;
     var rightx = x + sprite_width;
