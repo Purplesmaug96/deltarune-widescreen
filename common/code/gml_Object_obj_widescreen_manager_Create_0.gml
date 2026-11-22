@@ -55,15 +55,6 @@ if (!ini_key_exists("GRAPHICS", "async_texture_loads")) {
     ini_write_real("GRAPHICS", "async_texture_loads", global.async_texture_loads);
 }
 
-global.load_screen = ini_read_real("GRAPHICS", "load_screen", 1);
-if (!ini_key_exists("GRAPHICS", "load_screen")) {
-    ini_write_real("GRAPHICS", "load_screen", global.load_screen);
-}
-
-if (global.load_screen) {
-    global.load_screen_spr = sprite_add("load_screen/ch" + string(global.chapter) + ".png", 1, false, false, 0, 0);
-}
-
 global.alt_attack_mode = ini_read_real("GAMEPLAY", "alt_attack_mode", 0);
 if (!ini_key_exists("GAMEPLAY", "alt_attack_mode")) {
     ini_write_real("GAMEPLAY", "alt_attack_mode", global.alt_attack_mode);

@@ -50,12 +50,12 @@ if (!instance_exists(obj_event_manager))
         }
     }
 }
-global.chapter = 1;
 if (!instance_exists(obj_widescreen_manager))
 {
     global.widescreen_manager = instance_create(0, 0, obj_widescreen_manager);
 }
 global_flagname_init();
+global.chapter = 1;
 global.screen_border_id = "Dynamic";
 global.screen_border_active = true;
 global.screen_border_alpha = 1;
@@ -76,6 +76,32 @@ if (os_type == os_ps4 || os_type == os_ps5)
     global.version = "1.31";
 }
 old_savedata_check = false;
-
-scr_prefetch_textures();
-____________done = false;
+if (global.is_console)
+{
+    ossafe_init();
+    ossafe_savedata_load();
+    if (os_type == os_ps4 || os_type == os_ps5)
+    {
+        window_set_cursor(cr_none);
+    }
+}
+else
+{
+    scr_84_init_localization();
+    scr_84_load_ini();
+    scr_gamestart();
+    global.damagefont = font_add_sprite_ext(spr_numbersfontbig, "0123456789", 20, 0);
+    global.hpfont = font_add_sprite_ext(spr_numbersfontsmall, scr_84_get_lang_string("obj_initializer2_slash_Create_0_gml_2_0"), 0, 2); // 0123456789-+
+    for (i = 0; i < 100; i += 1)
+    {
+        global.tempflag[i] = 0;
+    }
+    global.heartx = 300;
+    global.hearty = 220;
+    scr_prefetch_textures();
+    scr_load_audio();
+    if (!instance_exists(obj_time))
+    {
+        instance_create(0, 0, obj_time);
+    }
+}
