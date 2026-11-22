@@ -12,7 +12,3 @@ if (global.target_fps != 30) {
     game_set_speed(global.target_fps, gamespeed_fps);
     room_speed = global.target_fps;
 }
-// TODO: There's probably a better way to do this, but i dont wanna find it
-if (global.chapter == 1 && room == room_cc_joker) {
-    camera_set_view_pos(view_camera[0], camerax(), cameray());
-}
