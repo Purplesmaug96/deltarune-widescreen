@@ -395,19 +395,21 @@ configmenuregistry[array_length(configmenuregistry)] = { name: "Controls", func:
 _str_on = stringsetloc("ON", "obj_darkcontroller_slash_Draw_0_gml_140_0");
 _str_off = stringsetloc("OFF", "obj_darkcontroller_slash_Draw_0_gml_141_0");
 
-// global.flag[1391] is voiceclips
-configmenuregistry[array_length(configmenuregistry)] = { name: "Voice Clips", func: function(index) {
-    global.flag[1391] = global.flag[1391] == 0 ? 1 : 0;
-    obj_darkcontroller.configmenuregistry[index].extratext = (global.flag[1391] == 0 ? obj_darkcontroller._str_on : obj_darkcontroller._str_off);
-    
-    if (global.flag[1391] == 1) obj_darkcontroller.cancelnoise = 1;
-    else obj_darkcontroller.selectnoise = 1;
-    
-    // Add ja version of this list
-    if (global.flag[1391] == 0) {
-        snd_play(choose(snd_flowery_voiceclip_jarona1, snd_flowery_voiceclip_jarona2, snd_flowery_voiceclip_jarona3, snd_flowery_voiceclip_jarona4, snd_flowery_voiceclip_glue, snd_flowery_voiceclip_try_my_flavor, snd_flowery_voiceclip_mostlys, snd_flowery_voiceclip_hey, snd_flowery_voiceclip_itsmeflowery, snd_flowery_voiceclip_stingus, snd_flowery_voiceclip_mysterious_wind, snd_flowery_voiceclip_smile_again, snd_flowery_voiceclip_hereicomesanfrandisc, snd_flowery_voiceclip_hereicomesanfrandisco_strong, snd_flowery_voiceclip_great_style, snd_flowery_voiceclip_hah, snd_flowery_voiceclip_leaf_it_to_me, snd_flowery_voiceclip_flowers_blooms_in_your_heart, snd_flowery_voiceclip_hoo, snd_flowery_voiceclip_theyre_eating_my_flesh, snd_flowery_voiceclip_minipeppers, snd_flowery_voiceclip_blingo_blizzard, snd_flowery_voiceclip_your_dad, snd_flowery_voiceclip_the_diner));
-    }
-}, extratext: (global.flag[1391] == 0 ? obj_darkcontroller._str_on : obj_darkcontroller._str_off), col: c_white, input_callback: 0, draw_callback: 0 };
+if (global.chapter == 5) {
+    // global.flag[1391] is voiceclips
+    configmenuregistry[array_length(configmenuregistry)] = { name: "Voice Clips", func: function(index) {
+        global.flag[1391] = global.flag[1391] == 0 ? 1 : 0;
+        obj_darkcontroller.configmenuregistry[index].extratext = (global.flag[1391] == 0 ? obj_darkcontroller._str_on : obj_darkcontroller._str_off);
+        
+        if (global.flag[1391] == 1) obj_darkcontroller.cancelnoise = 1;
+        else obj_darkcontroller.selectnoise = 1;
+        
+        // Add ja version of this list
+        if (global.flag[1391] == 0) {
+            snd_play(choose(snd_flowery_voiceclip_jarona1, snd_flowery_voiceclip_jarona2, snd_flowery_voiceclip_jarona3, snd_flowery_voiceclip_jarona4, snd_flowery_voiceclip_glue, snd_flowery_voiceclip_try_my_flavor, snd_flowery_voiceclip_mostlys, snd_flowery_voiceclip_hey, snd_flowery_voiceclip_itsmeflowery, snd_flowery_voiceclip_stingus, snd_flowery_voiceclip_mysterious_wind, snd_flowery_voiceclip_smile_again, snd_flowery_voiceclip_hereicomesanfrandisc, snd_flowery_voiceclip_hereicomesanfrandisco_strong, snd_flowery_voiceclip_great_style, snd_flowery_voiceclip_hah, snd_flowery_voiceclip_leaf_it_to_me, snd_flowery_voiceclip_flowers_blooms_in_your_heart, snd_flowery_voiceclip_hoo, snd_flowery_voiceclip_theyre_eating_my_flesh, snd_flowery_voiceclip_minipeppers, snd_flowery_voiceclip_blingo_blizzard, snd_flowery_voiceclip_your_dad, snd_flowery_voiceclip_the_diner));
+        }
+    }, extratext: (global.flag[1391] == 0 ? obj_darkcontroller._str_on : obj_darkcontroller._str_off), col: c_white, input_callback: 0, draw_callback: 0 };
+}
 
 if (global.flag[24]) {
     configmenuregistry[array_length(configmenuregistry)] = { name: "Feather", func: function(index) {
