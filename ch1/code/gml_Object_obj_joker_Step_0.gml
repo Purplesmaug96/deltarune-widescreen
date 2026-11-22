@@ -383,8 +383,8 @@ if (con == 6)
 }
 if (global.myfight == 3)
 {
-    xx = __view_get(e__VW.XView, 0);
-    yy = __view_get(e__VW.YView, 0);
+    xx = camerax();
+    yy = cameray();
     if (acting == 1 && actcon == 0)
     {
         actcon = 1;
@@ -470,7 +470,7 @@ if (global.myfight == 3)
                     instance_destroy();
                 }
             }
-            bird = scr_dark_marker(__view_get(e__VW.XView, 0) - 40, __view_get(e__VW.YView, 0) + 60, spr_uselessbird);
+            bird = scr_dark_marker(camerax() - 40, cameray() + 60, spr_uselessbird);
             with (bird)
             {
                 hspeed = 12;

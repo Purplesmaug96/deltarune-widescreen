@@ -14,28 +14,7 @@ inv = 60;
 grazetimer = 0;
 target = 0;
 sndcon = 0;
-if (x < (__view_get(e__VW.XView, 0) + (camerawidth() / 2)))
+if (x < (raw_camerax() + (camerawidth() / 2)))
 {
     sprite_index = spr_joker_teleport_r;
-}
-
-enum e__VW
-{
-    XView,
-    YView,
-    WView,
-    HView,
-    Angle,
-    HBorder,
-    VBorder,
-    HSpeed,
-    VSpeed,
-    Object,
-    Visible,
-    XPort,
-    YPort,
-    WPort,
-    HPort,
-    Camera,
-    SurfaceID
 }

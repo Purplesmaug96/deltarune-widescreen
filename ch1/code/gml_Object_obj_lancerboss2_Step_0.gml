@@ -123,8 +123,8 @@ if (global.monster[myself] == 1)
 }
 if (global.myfight == 3)
 {
-    xx = __view_get(e__VW.XView, 0);
-    yy = __view_get(e__VW.YView, 0);
+    xx = camerax();
+    yy = cameray();
     if (acting == 1 && actcon == 0)
     {
         firstskip = 0;
@@ -196,7 +196,7 @@ if (global.myfight == 3)
     {
         snd_free_all();
         snd_play(snd_laz_c);
-        black = scr_dark_marker(__view_get(e__VW.XView, 0) - 20, __view_get(e__VW.YView, 0) - 20, spr_pixel_white);
+        black = scr_dark_marker(camerax() - 20, cameray() - 20, spr_pixel_white);
         with (black)
         {
             image_blend = c_black;

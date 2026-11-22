@@ -158,8 +158,8 @@ if (global.monster[myself] == 1)
 }
 if (global.myfight == 3)
 {
-    xx = __view_get(e__VW.XView, 0);
-    yy = __view_get(e__VW.YView, 0);
+    xx = camerax();
+    yy = cameray();
     if (acting == 1 && actcon == 0)
     {
         actcon = 1;
@@ -274,7 +274,7 @@ if (global.myfight == 3)
     }
     if (actcon == 23)
     {
-        if (x >= (__view_get(e__VW.XView, 0) + 640))
+        if (x >= (raw_camerax() + camerawidth()))
         {
             actcon = 1;
         }
