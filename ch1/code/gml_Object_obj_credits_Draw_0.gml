@@ -9,31 +9,10 @@ if (timer >= 573 && timer < 668)
 for (i = 0; i < 8; i += 1)
 {
     draw_set_color(linecolor[i]);
-    draw_text(__view_get(e__VW.XView, 0) + (camerawidth() / 2), __view_get(e__VW.YView, 0) + (20 * i) + 50 + y_offset, string_hash_to_newline(line[i]));
+    draw_text(camerax() + (camerawidth() / 2), cameray() + (20 * i) + 50 + y_offset, string_hash_to_newline(line[i]));
 }
 draw_set_alpha(textalpha);
 draw_set_color(c_yellow);
-draw_text(__view_get(e__VW.XView, 0) + (camerawidth() / 2), cameraheight() - 40, string_hash_to_newline(lyric));
+draw_text(camerax() + (camerawidth() / 2), cameraheight() - 40, string_hash_to_newline(lyric));
 draw_set_alpha(1);
 draw_set_halign(fa_left);
-
-enum e__VW
-{
-    XView,
-    YView,
-    WView,
-    HView,
-    Angle,
-    HBorder,
-    VBorder,
-    HSpeed,
-    VSpeed,
-    Object,
-    Visible,
-    XPort,
-    YPort,
-    WPort,
-    HPort,
-    Camera,
-    SurfaceID
-}
