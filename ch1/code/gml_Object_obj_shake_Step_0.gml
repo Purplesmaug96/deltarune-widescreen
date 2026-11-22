@@ -1,7 +1,7 @@
 if (active == 0)
 {
-    var cx = raw_camerax();
-    var cy = raw_cameray();
+    cx = raw_camerax();
+    cy = raw_cameray();
     if (global.flag[12] == 0)
     {
         __view_set(e__VW.XView, camera, cx + shakex);
