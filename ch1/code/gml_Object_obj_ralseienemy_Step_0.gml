@@ -431,8 +431,8 @@ if (attackcon < 92 && attackcon > 0)
 }
 if (global.myfight == 3)
 {
-    xx = __view_get(e__VW.XView, 0);
-    yy = __view_get(e__VW.YView, 0);
+    xx = camerax();
+    yy = cameray();
     if (acting == 1 && actcon == 0)
     {
         actcon = 1;
