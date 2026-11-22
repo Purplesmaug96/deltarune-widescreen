@@ -1,3 +1,3 @@
 function raw_camerax() {
-    return camera_get_view_x(view_camera[0]);
+    return camera_get_view_x(view_camera[view_current]);
 }
