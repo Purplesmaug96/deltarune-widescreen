@@ -1,4 +1,6 @@
 btimer += 1;
+var xx = camerax();
+var yy = cameray();
 if (type == 0)
 {
     if (btimer >= (timermax * ratio))
@@ -9,9 +11,9 @@ if (type == 0)
         xx = lengthdir_x(radius, dir);
         yy = lengthdir_y(radius, dir);
         bm = instance_create(obj_heart.x + 8 + xx, obj_heart.y + 8 + yy, obj_dbullet_maker);
-        if (bm.y < (__view_get(e__VW.YView, 0) + 40))
+        if (bm.y < (cameray() + 40))
         {
-            bm.y = __view_get(e__VW.YView, 0) + 40;
+            bm.y = cameray() + 40;
         }
         bm.damage = damage;
         bm.target = target;
@@ -39,10 +41,10 @@ if (type == 2)
 {
     if (btimer >= (20 * ratio))
     {
-        xx = __view_get(e__VW.XView, 0) - 20;
+        xx = camerax() - 20;
         if (side == 1)
         {
-            xx = __view_get(e__VW.XView, 0) + 660;
+            xx = camerax() + 660;
         }
         yy = miny + random(maxy - miny);
         bul = instance_create(xx, yy, obj_clubsbullet);
@@ -131,12 +133,13 @@ if (type == 4)
 }
 if (type == 6)
 {
-    xx = __view_get(e__VW.XView, 0);
-    yy = __view_get(e__VW.YView, 0);
     if (made == 0)
     {
-        d = instance_create(300 + xx, -20 + yy, obj_dicebul);
-        e = instance_create(360 + xx, -60 + yy, obj_dicebul);
+        // What the fuck toby.
+        // d = instance_create(300 + xx, -20 + yy, obj_dicebul);
+        // e = instance_create(360 + xx, -60 + yy, obj_dicebul);
+        d = instance_create(xx + 300, yy - 20, obj_dicebul);
+        e = instance_create(xx + 360, yy - 60, obj_dicebul);
         d.target = target;
         d.damage = damage;
         e.target = target;
@@ -146,8 +149,6 @@ if (type == 6)
 }
 if (type == 7)
 {
-    xx = __view_get(e__VW.XView, 0);
-    yy = __view_get(e__VW.YView, 0);
     if (made < 3 && btimer >= 15)
     {
         btimer = 0;
@@ -165,8 +166,6 @@ if (type == 7)
 }
 if (type == 8)
 {
-    xx = __view_get(e__VW.XView, 0);
-    yy = __view_get(e__VW.YView, 0);
     if (made < 4 && btimer >= 15)
     {
         btimer = 0;
@@ -187,8 +186,6 @@ if (type == 8)
 }
 if (type == 10)
 {
-    xx = __view_get(e__VW.XView, 0);
-    yy = __view_get(e__VW.YView, 0);
     if (btimer >= 15)
     {
         btimer = 0;
@@ -199,7 +196,7 @@ if (type == 10)
         {
             image_xscale = 2;
             image_yscale = 2;
-            if (x > (__view_get(e__VW.XView, 0) + 320))
+            if (x > (camerax() + 320))
             {
                 hspeed = -6 - random(1);
             }
@@ -213,8 +210,6 @@ if (type == 10)
 }
 if (type == 11)
 {
-    xx = __view_get(e__VW.XView, 0);
-    yy = __view_get(e__VW.YView, 0);
     if (made < 4 && btimer >= 15)
     {
         btimer = 0;
@@ -240,8 +235,6 @@ if (type == 11)
 }
 if (type == 12)
 {
-    xx = __view_get(e__VW.XView, 0);
-    yy = __view_get(e__VW.YView, 0);
     if (made == 0)
     {
         db = instance_create(320 + xx, -20 + yy, obj_dicebul);
@@ -254,8 +247,6 @@ if (type == 12)
 }
 if (type == 13)
 {
-    xx = __view_get(e__VW.XView, 0);
-    yy = __view_get(e__VW.YView, 0);
     if (made < 2 && btimer >= 20)
     {
         db[made] = instance_create(320 + xx, -20 + yy, obj_dicebul);
@@ -279,10 +270,10 @@ if (type == 14)
 {
     if (btimer >= 10)
     {
-        xx = __view_get(e__VW.XView, 0) - 20;
+        xx -= 20;
         if (side == 1)
         {
-            xx = __view_get(e__VW.XView, 0) + 660;
+            xx += 680;
         }
         yy = miny + random(maxy - miny);
         bul = instance_create(xx, yy, obj_regularbullet);
@@ -336,7 +327,7 @@ if (type == 20 || type == 22)
     if (btimer >= bmax)
     {
         radius = -80 + random(160) + 8;
-        fallspade = instance_create(obj_heart.x + radius, __view_get(e__VW.YView, 0) - 20, obj_regularbullet);
+        fallspade = instance_create(obj_heart.x + radius, yy - 20, obj_regularbullet);
         fallspade.damage = damage;
         fallspade.target = target;
         with (fallspade)
@@ -387,7 +378,7 @@ if (type == 21 || type == 23 || type == 25)
         {
             radius = 560;
         }
-        sidespade[side] = instance_create(__view_get(e__VW.XView, 0) + radius, (obj_growtangle.y - (obj_growtangle.sprite_height / 2)) + random(obj_growtangle.sprite_height), obj_regularbullet);
+        sidespade[side] = instance_create(xx + radius, (obj_growtangle.y - (obj_growtangle.sprite_height / 2)) + random(obj_growtangle.sprite_height), obj_regularbullet);
         if (side == 0)
         {
             sidespade[side].direction = 0;
@@ -544,8 +535,8 @@ if (type == 26)
     }
     if (btimer >= timer)
     {
-        x_c = __view_get(e__VW.XView, 0) + 300;
-        y_c = __view_get(e__VW.YView, 0) + 140;
+        x_c = xx + 300;
+        y_c = yy + 140;
         x_o = 200;
         y_o = -60;
         y_o_o = -80 + random(160);
@@ -696,25 +687,27 @@ if (type == 34)
     if (btimer >= 28)
     {
         typechoice = choose(0, 1, 2, 3);
-        xx = 0;
-        yy = 0;
         if (typechoice == 0 || typechoice == 3)
         {
-            xx = (__view_get(e__VW.XView, 0) + 320 + random(300)) - random(300);
+            xx = (xx + 320 + random(300)) - random(300);
             yy = -60;
         }
-        if (typechoice == 1)
+        else if (typechoice == 1)
         {
-            xx = __view_get(e__VW.XView, 0) - 60;
+            xx -= 60;
             yy = random(320);
         }
-        if (typechoice == 2)
+        else if (typechoice == 2)
         {
-            xx = __view_get(e__VW.XView, 0) + 700;
+            xx += 700;
             yy = random(320);
+        }
+        else {
+            xx = 0;
+            yy = 0;
         }
         chain = instance_create(xx, yy, obj_skychain);
-        scr_bullet_inherit(255);
+        scr_bullet_inherit(obj_skychain);
         btimer = 0;
     }
 }
@@ -723,22 +716,24 @@ if (type == 35)
     if (btimer >= 22)
     {
         typechoice = choose(0, 1, 2, 3);
-        xx = 0;
-        yy = 0;
         if (typechoice == 0 || typechoice == 3)
         {
-            xx = (__view_get(e__VW.XView, 0) + 320 + random(300)) - random(300);
+            xx = (xx + 320 + random(300)) - random(300);
             yy = -60;
         }
-        if (typechoice == 1)
+        else if (typechoice == 1)
         {
-            xx = __view_get(e__VW.XView, 0) - 60;
+            xx -= 60;
             yy = random(320);
         }
-        if (typechoice == 2)
+        else if (typechoice == 2)
         {
-            xx = __view_get(e__VW.XView, 0) + 700;
+            xx += 700;
             yy = random(320);
+        }
+        else {
+            xx = 0;
+            yy = 0;
         }
         chain = instance_create(xx, yy, obj_skychain);
         scr_bullet_inherit(chain);
@@ -750,22 +745,24 @@ if (type == 36)
     if (btimer >= 16)
     {
         typechoice = choose(0, 1, 2, 3);
-        xx = 0;
-        yy = 0;
         if (typechoice == 0 || typechoice == 3)
         {
-            xx = (__view_get(e__VW.XView, 0) + 320 + random(300)) - random(300);
+            xx = (xx + 320 + random(300)) - random(300);
             yy = -60;
         }
-        if (typechoice == 1)
+        else if (typechoice == 1)
         {
-            xx = __view_get(e__VW.XView, 0) - 60;
+            xx -= 60;
             yy = random(320);
         }
-        if (typechoice == 2)
+        else if (typechoice == 2)
         {
-            xx = __view_get(e__VW.XView, 0) + 700;
+            xx += 700;
             yy = random(320);
+        }
+        else {
+            xx = 0;
+            yy = 0;
         }
         chain = instance_create(xx, yy, obj_skychain);
         scr_bullet_inherit(chain);
@@ -884,7 +881,7 @@ if (type == 85)
         {
             visible = 0;
         }
-        fakelan = instance_create(__view_get(e__VW.XView, 0) + 580, obj_battlesolid.y + 160, obj_bulletparent);
+        fakelan = instance_create(xx + 580, obj_battlesolid.y + 160, obj_bulletparent);
         with (fakelan)
         {
             depth += 1;
@@ -895,7 +892,7 @@ if (type == 85)
             active = 0;
             image_speed = 0.2;
         }
-        fakesus = instance_create(__view_get(e__VW.XView, 0) + 530, obj_battlesolid.y - 40, obj_bulletparent);
+        fakesus = instance_create(xx + 530, obj_battlesolid.y - 40, obj_bulletparent);
         with (fakesus)
         {
             image_xscale = 2;
@@ -976,7 +973,7 @@ if (type == 85)
         }
         for (i = 0; i < 1; i += 1)
         {
-            axe[i] = instance_create(__view_get(e__VW.XView, 0) + 540, obj_battlesolid.y, obj_axebullet);
+            axe[i] = instance_create(xx + 540, obj_battlesolid.y, obj_axebullet);
             scr_bullet_inherit(axe[i]);
         }
         btimer = 0;
@@ -989,7 +986,7 @@ if (joker == 1)
         if (btimer >= 18)
         {
             xx = choose(0, 1);
-            basex = __view_get(e__VW.XView, 0) + 320;
+            basex = camerax() + 320;
             if (instance_exists(obj_growtangle))
             {
                 basex = obj_growtangle.x;
@@ -1016,7 +1013,7 @@ if (joker == 1)
         if (btimer >= 12)
         {
             xx = choose(0, 1);
-            basex = __view_get(e__VW.XView, 0) + 320;
+            basex = camerax() + 320;
             if (instance_exists(obj_growtangle))
             {
                 basex = obj_growtangle.x;
@@ -1043,7 +1040,7 @@ if (joker == 1)
         if (btimer >= 12)
         {
             xx = choose(0, 1);
-            basex = __view_get(e__VW.XView, 0) + 320;
+            basex = camerax() + 320;
             if (instance_exists(obj_growtangle))
             {
                 basex = obj_growtangle.x;
@@ -1067,7 +1064,7 @@ if (joker == 1)
         if (btimer >= 12)
         {
             xx = choose(0, 1);
-            basex = __view_get(e__VW.XView, 0) + 320;
+            basex = camerax() + 320;
             if (instance_exists(obj_growtangle))
             {
                 basex = obj_growtangle.x;
@@ -1091,7 +1088,7 @@ if (joker == 1)
         if (btimer >= 20)
         {
             xx = choose(0, 1);
-            basex = __view_get(e__VW.XView, 0) + 320;
+            basex = camerax() + 320;
             if (instance_exists(obj_growtangle))
             {
                 basex = obj_growtangle.x;
@@ -1115,7 +1112,7 @@ if (joker == 1)
         if (btimer >= 12)
         {
             xx = choose(0, 1);
-            basex = __view_get(e__VW.XView, 0) + 320;
+            basex = camerax() + 320;
             if (instance_exists(obj_growtangle))
             {
                 basex = obj_growtangle.x;
@@ -1463,7 +1460,7 @@ if (joker == 1)
             made = 0;
             amount = 0;
             jokertimer = 0;
-            darkfader = scr_dark_marker(__view_get(e__VW.XView, 0) + 320, __view_get(e__VW.YView, 0) - 10, spr_tallpx);
+            darkfader = scr_dark_marker(camerax() + 320, cameray() - 10, spr_tallpx);
             with (darkfader)
             {
                 depth = 2;
@@ -1498,11 +1495,11 @@ if (joker == 1)
         }
         if (realtimer == 20)
         {
-            instance_create(__view_get(e__VW.XView, 0) + 40, -60, obj_laserscythe);
+            instance_create(camerax() + 40, -60, obj_laserscythe);
         }
         if (realtimer == 40)
         {
-            instance_create(__view_get(e__VW.XView, 0) + 570, -60, obj_laserscythe);
+            instance_create(camerax() + 570, -60, obj_laserscythe);
         }
         if (realtimer >= 60 && amount < 30)
         {
@@ -1522,14 +1519,14 @@ if (joker == 1)
                     which = floor((obj_heart.x + 8) / 90);
                     chase = 0;
                 }
-                scythe = instance_create(__view_get(e__VW.XView, 0) + 40 + (90 * which), -60, obj_laserscythe);
+                scythe = instance_create(camerax() + 40 + (90 * which), -60, obj_laserscythe);
                 if (which == 1)
                 {
-                    scythe2 = instance_create(__view_get(e__VW.XView, 0) + 40 + 450, -60, obj_laserscythe);
+                    scythe2 = instance_create(camerax() + 40 + 450, -60, obj_laserscythe);
                 }
                 if (which == 0)
                 {
-                    scythe2 = instance_create(__view_get(e__VW.XView, 0) + 40 + 540, -60, obj_laserscythe);
+                    scythe2 = instance_create(camerax() + 40 + 540, -60, obj_laserscythe);
                 }
                 prevmake = which;
                 btimer = 0;
@@ -1540,7 +1537,7 @@ if (joker == 1)
         if (amount >= (29 - made) && special == 1)
         {
             jokertimer = 0;
-            jokerin = instance_create(__view_get(e__VW.XView, 0) + 320, __view_get(e__VW.YView, 0) + 100, obj_joker_teleport);
+            jokerin = instance_create(camerax() + 320, cameray() + 100, obj_joker_teleport);
             with (jokerin)
             {
                 type = 66;
@@ -1558,26 +1555,26 @@ if (joker == 1)
             }
             if (jokertimer == 40 || jokertimer == 98)
             {
-                scythe = instance_create(__view_get(e__VW.XView, 0) + 40, -60, obj_laserscythe);
-                scythe = instance_create(__view_get(e__VW.XView, 0) + 580, -60, obj_laserscythe);
+                scythe = instance_create(camerax() + 40, -60, obj_laserscythe);
+                scythe = instance_create(camerax() + 580, -60, obj_laserscythe);
             }
             if (jokertimer == 46 || jokertimer == 86)
             {
-                scythe = instance_create(__view_get(e__VW.XView, 0) + 130, -60, obj_laserscythe);
-                scythe = instance_create(__view_get(e__VW.XView, 0) + 490, -60, obj_laserscythe);
+                scythe = instance_create(camerax() + 130, -60, obj_laserscythe);
+                scythe = instance_create(camerax() + 490, -60, obj_laserscythe);
             }
             if (jokertimer == 52 || jokertimer == 80)
             {
-                scythe = instance_create(__view_get(e__VW.XView, 0) + 220, -60, obj_laserscythe);
-                scythe = instance_create(__view_get(e__VW.XView, 0) + 400, -60, obj_laserscythe);
+                scythe = instance_create(camerax() + 220, -60, obj_laserscythe);
+                scythe = instance_create(camerax() + 400, -60, obj_laserscythe);
             }
             if (jokertimer == 66 || jokertimer == 98)
             {
-                scythe = instance_create(__view_get(e__VW.XView, 0) + 310, -60, obj_laserscythe);
+                scythe = instance_create(camerax() + 310, -60, obj_laserscythe);
             }
             if (jokertimer == 130)
             {
-                lastscythe = instance_create(__view_get(e__VW.XView, 0) + 320, -320, obj_laserscythe);
+                lastscythe = instance_create(camerax() + 320, -320, obj_laserscythe);
                 p = 0;
                 vol = 0;
                 vol2 = 1;
@@ -1593,7 +1590,7 @@ if (joker == 1)
                     remrot = 160;
                     image_angle = 160;
                 }
-                fadewhite = instance_create(__view_get(e__VW.XView, 0) + 320, __view_get(e__VW.YView, 0) - 40, obj_marker);
+                fadewhite = instance_create(camerax() + 320, cameray() - 40, obj_marker);
                 fadewhite.sprite_index = spr_tallpx;
                 fadewhite.image_xscale = 400;
                 fadewhite.image_yscale = 2;
@@ -1632,8 +1629,8 @@ if (joker == 1)
         {
             with (obj_heart)
             {
-                x = __view_get(e__VW.XView, 0) + 320;
-                y = __view_get(e__VW.YView, 0) + 120;
+                x = camerax() + 320;
+                y = cameray() + 120;
             }
             vol -= 0.1;
             audio_sound_gain(rumnoise, vol, 0);
@@ -1650,25 +1647,4 @@ if (joker == 1)
         }
         realtimer += 1;
     }
-}
-
-enum e__VW
-{
-    XView,
-    YView,
-    WView,
-    HView,
-    Angle,
-    HBorder,
-    VBorder,
-    HSpeed,
-    VSpeed,
-    Object,
-    Visible,
-    XPort,
-    YPort,
-    WPort,
-    HPort,
-    Camera,
-    SurfaceID
 }
