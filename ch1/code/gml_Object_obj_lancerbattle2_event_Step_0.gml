@@ -17,7 +17,7 @@ if (con == 1)
 {
     diamond = scr_dark_marker(x + 80, y - 47, spr_diamond_knight_overworld);
     puzzwall = scr_dark_marker(1000, 0, spr_jailwall);
-    __view_set(e__VW.XView, 0, 200);
+    camerax_set(200 + global.widescreen_half_diff);
     global.interact = 1;
     image_speed = 0;
     with (obj_mainchara)
@@ -317,7 +317,7 @@ if (con == 7)
 if (con == 8)
 {
     scr_encountersetup(global.encounterno);
-    __view_set(e__VW.XView, 0, raw_camerax() + 10);
+    camerax_set(raw_camerax() + 10);
     if (x <= (global.monstermakex[0] + 5))
     {
         x = global.monstermakex[0];

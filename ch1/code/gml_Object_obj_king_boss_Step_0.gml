@@ -449,27 +449,6 @@ if (global.myfight == 7)
 }
 if (!instance_exists(obj_shake))
 {
-    __view_set(e__VW.XView, 0, remxx);
-    __view_set(e__VW.YView, 0, remyy);
-}
-
-enum e__VW
-{
-    XView,
-    YView,
-    WView,
-    HView,
-    Angle,
-    HBorder,
-    VBorder,
-    HSpeed,
-    VSpeed,
-    Object,
-    Visible,
-    XPort,
-    YPort,
-    WPort,
-    HPort,
-    Camera,
-    SurfaceID
+    camerax_set(remxx);
+    cameray_set(remyy);
 }

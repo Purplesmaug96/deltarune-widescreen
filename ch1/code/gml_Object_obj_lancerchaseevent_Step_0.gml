@@ -123,7 +123,7 @@ if (con == 11)
 {
     if (raw_cameray() >= (room_height - cameraheight()))
     {
-        __view_set(e__VW.YView, 0, room_height - cameraheight());
+        cameray_set(room_height - cameraheight());
     }
 }
 if (con == 12)

@@ -92,14 +92,7 @@ if (cameracon == 1)
 {
     if (cameray() < 880)
     {
-        if (seiz == 0)
-        {
-            __view_set(e__VW.YView, 0, raw_cameray() + 20);
-        }
-        else
-        {
-            __view_set(e__VW.YView, 0, raw_cameray() + 10);
-        }
+        cameray_set(raw_cameray() + (seiz == 0 ? 20 : 10))
     }
     else
     {

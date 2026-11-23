@@ -957,7 +957,7 @@ if (con >= 76 && con < 150)
     {
         if (part == 0)
         {
-            __view_set(e__VW.XView, 0, 360 + global.xoff);
+            camerax_set(360 + global.xoff + global.widescreen_half_diff);
             k = scr_dark_marker(0, 0, spr_krisb_idle);
             s = scr_dark_marker(0, 0, spr_susieb_idle_serious);
             r = scr_dark_marker(0, 0, spr_ralseib_idle);
@@ -1557,10 +1557,10 @@ if (con >= 76 && con < 150)
     {
         if (raw_camerax() > 0)
         {
-            __view_set(e__VW.XView, 0, raw_camerax() + (k.hspeed * 2));
+            camerax_set(raw_camerax() + (k.hspeed * 2));
             if (raw_camerax() <= 0)
             {
-                __view_set(e__VW.XView, 0, 0);
+                camerax_set(0);
             }
         }
         if (abs(k.hspeed) < 0.2)
@@ -2072,7 +2072,7 @@ if (con >= 150 && con < 250)
         {
             scr_depth();
         }
-        __view_set(e__VW.XView, 0, 200);
+        camerax_set(200 + global.widescreen_half_diff);
         con = 201;
     }
     if (con == 201)
@@ -2476,7 +2476,7 @@ if (con >= 250 && con <= 265)
             {
                 depth = 800000;
             }
-            __view_set(e__VW.XView, 0, 200);
+            camerax_set(200 + global.widescreen_half_diff);
             king = scr_dark_marker(439, 100, spr_king_kneel);
             king.siner = 0;
             part = 1;
@@ -3003,7 +3003,7 @@ if (con >= 350 && con < 700)
     {
         if (part == 0)
         {
-            __view_set(e__VW.XView, 0, 200);
+            camerax_set(200 + global.widescreen_half_diff);
             k = scr_dark_marker(598, 180, spr_krisr_kneel);
             s = scr_dark_marker(700, 166, spr_susiel_eye_dark_unhappy);
             with (k)
@@ -3362,25 +3362,4 @@ if (con >= 700)
         snd_free_all();
         con = 286;
     }
-}
-
-enum e__VW
-{
-    XView,
-    YView,
-    WView,
-    HView,
-    Angle,
-    HBorder,
-    VBorder,
-    HSpeed,
-    VSpeed,
-    Object,
-    Visible,
-    XPort,
-    YPort,
-    WPort,
-    HPort,
-    Camera,
-    SurfaceID
 }

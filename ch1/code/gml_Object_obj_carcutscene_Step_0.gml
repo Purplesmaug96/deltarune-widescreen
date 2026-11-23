@@ -182,7 +182,7 @@ if (con > 0)
             visible = 0;
             cutscene = 1;
         }
-        __view_set(e__VW.XView, 0, 180);
+        camerax_set(180 + global.widescreen_half_diff);
         scr_pan(2.5, 0, 900);
         global.interact = 1;
         con = 24;
@@ -287,7 +287,7 @@ if (con > 0)
             visible = 0;
             cutscene = 1;
         }
-        __view_set(e__VW.XView, 0, 670);
+        camerax_set(670 + global.widescreen_half_diff);
         global.interact = 1;
         con = 131;
         alarm[4] = 200 / car.vspeed;
@@ -331,7 +331,7 @@ if (con > 0)
             visible = 0;
             cutscene = 1;
         }
-        __view_set(e__VW.XView, 0, 660);
+        camerax_set(660 + global.widescreen_half_diff);
         scr_pan(2, 0, 300);
         global.interact = 1;
         con = 141;
@@ -415,8 +415,8 @@ if (con > 0)
             visible = 0;
             cutscene = 1;
         }
-        __view_set(e__VW.XView, 0, 0);
-        __view_set(e__VW.YView, 0, room_height - cameraheight());
+        camerax_set(global.widescreen_half_diff);
+        cameray_set(room_height - cameraheight());
         global.interact = 1;
         con = 162;
         scr_pan(1, 0, 100);

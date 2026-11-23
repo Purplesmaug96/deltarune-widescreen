@@ -131,9 +131,10 @@ if (shakecon == 1)
 }
 if (shakecon == 2)
 {
+    // TODO: Is this wrong?
     if (abs(cameray()) < 4)
     {
-        __view_set(e__VW.YView, 0, cameray() - (dir * 0.5));
+        cameray_set(cameray() - (dir * 0.5));
     }
 }
 if (shakecon == 3)
@@ -146,14 +147,14 @@ if (shakecon == 4)
 {
     if (shakeamt >= 0)
     {
-        __view_set(e__VW.XView, 0, (0 - random(shakeamt)) + random(shakeamt));
-        __view_set(e__VW.YView, 0, (0 - random(shakeamt)) + random(shakeamt));
+        camerax_set((0 - random(shakeamt)) + random(shakeamt) + global.widescreen_half_diff);
+        cameray_set((0 - random(shakeamt)) + random(shakeamt));
         shakeamt -= 0.5;
     }
     else
     {
-        __view_set(e__VW.XView, 0, 0);
-        __view_set(e__VW.YView, 0, 0);
+        camerax_set(global.widescreen_half_diff);
+        cameray_set(0);
         shakecon = 0;
     }
 }

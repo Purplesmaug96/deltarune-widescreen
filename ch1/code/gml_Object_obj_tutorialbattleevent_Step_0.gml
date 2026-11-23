@@ -3,7 +3,7 @@ if (con < 400)
     // TODO: Raw or normal? Figure out later
     if (con == 1 && raw_camerax() >= (xx - 13) && raw_camerax() <= (xx + 20) && global.interact == 0)
     {
-        __view_set(e__VW.XView, 0, xx - 10);
+        camerax_set(xx - 10);
         global.interact = 1;
         con = 40;
         global.msc = 135;

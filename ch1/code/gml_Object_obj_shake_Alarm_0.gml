@@ -1,7 +1,7 @@
 if (global.flag[12] == 0)
 {
-    __view_set(e__VW.XView, camera, cx + (shakex * shakesign));
-    __view_set(e__VW.YView, camera, cy + (shakey * shakesign));
+    camerax_set(cx + (shakex * shakesign));
+    cameray_set(cy + (shakey * shakesign));
 }
 if (permashake == 0)
 {
@@ -19,25 +19,4 @@ alarm[0] = shakespeed;
 if (shakex == 0 && shakey == 0)
 {
     instance_destroy();
-}
-
-enum e__VW
-{
-    XView,
-    YView,
-    WView,
-    HView,
-    Angle,
-    HBorder,
-    VBorder,
-    HSpeed,
-    VSpeed,
-    Object,
-    Visible,
-    XPort,
-    YPort,
-    WPort,
-    HPort,
-    Camera,
-    SurfaceID
 }
