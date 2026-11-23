@@ -38,26 +38,5 @@ if (darken == 0)
 }
 draw_set_alpha(darkamt / 20);
 draw_set_color(c_black);
-draw_rectangle(raw_camerax() - 40, raw_cameray() - 40, camerax() + 680, cameray() + 520, false);
+draw_rectangle(raw_camerax(), raw_cameray(), raw_camerax() + camerawidth(), raw_cameray() + cameraheight(), false);
 draw_set_alpha(1);
-
-enum e__VW
-{
-    XView,
-    YView,
-    WView,
-    HView,
-    Angle,
-    HBorder,
-    VBorder,
-    HSpeed,
-    VSpeed,
-    Object,
-    Visible,
-    XPort,
-    YPort,
-    WPort,
-    HPort,
-    Camera,
-    SurfaceID
-}
