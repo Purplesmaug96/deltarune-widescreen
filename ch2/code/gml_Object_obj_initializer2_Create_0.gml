@@ -59,6 +59,8 @@ if (!instance_exists(obj_widescreen_manager))
 {
     global.widescreen_manager = instance_create(0, 0, obj_widescreen_manager);
 }
+global_flagname_init();
+global.chapter = 2;
 global.screen_border_id = "";
 global.screen_border_active = true;
 global.screen_border_alpha = 0;
