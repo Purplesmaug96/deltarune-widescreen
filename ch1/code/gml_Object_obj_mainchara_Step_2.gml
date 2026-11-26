@@ -20,8 +20,14 @@ if (!cutscene && !instance_exists(obj_shake)/* && (global.darkzone ? true : glob
         ht += 17;
     }
 
-    camerax_set(view_w > room_width ? -(view_w - room_width) / 2 : clamp(wd, 0, room_width - view_w));
-    cameray_set(view_h > room_height ? -(view_h - room_height) / 2 : clamp(ht, 0, room_height - view_h));
+    if (noclip) {
+        camerax_set(wd);
+        cameray_set(ht);
+    }
+    else {
+        camerax_set(view_w > room_width ? -(view_w - room_width) / 2 : clamp(wd, 0, room_width - view_w));
+        cameray_set(view_h > room_height ? -(view_h - room_height) / 2 : clamp(ht, 0, room_height - view_h));
+    }
 }
 
 if (bg == 1)
