@@ -50,9 +50,14 @@ if (!ini_key_exists("GRAPHICS", "move_dd_ch5")) {
     ini_write_real("GRAPHICS", "move_dd_ch5", global.move_dd_ch5);
 }
 
-global.async_texture_loads = ini_read_real("GRAPHICS", "async_texture_loads", 1);
+global.async_texture_loads = ini_read_real("GRAPHICS", "async_texture_loads", 0);
 if (!ini_key_exists("GRAPHICS", "async_texture_loads")) {
     ini_write_real("GRAPHICS", "async_texture_loads", global.async_texture_loads);
+}
+
+global.dynamic_trees = ini_read_real("GRAPHICS", "dynamic_trees", 1);
+if (!ini_key_exists("GRAPHICS", "dynamic_trees")) {
+    ini_write_real("GRAPHICS", "dynamic_trees", global.dynamic_trees);
 }
 
 global.alt_attack_mode = ini_read_real("GAMEPLAY", "alt_attack_mode", 0);
